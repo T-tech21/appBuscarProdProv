@@ -22,13 +22,13 @@ if ($conn->connect_error)
     die("la conexión ha fallado: " . $conn->connect_error);
 
 
-/*if(isset($_GET["sku"])){
+if(isset($_GET["proveedorwinmex"])){
 $pbu=$_GET["sku"];	
 	}
 	
-if(isset($_GET["productoswinmex"])){                  */
+if(isset($_GET["proveedorwinmex"])){                  
 $sqln=mysqli_query($conn, "SELECT Sku,Id,Descripcion,Precio,Imagenes FROM proveedorwinmex INNER JOIN  catalogolars On sku WHERE proveedorwinmex.sku = catalogoLars.sku LIKE '%$pbu%' order by pbu desc") or die(mysqli_error());
-
+}
 ?>
 
 <table class="Productos">
@@ -39,8 +39,7 @@ $sqln=mysqli_query($conn, "SELECT Sku,Id,Descripcion,Precio,Imagenes FROM provee
       <th scope="col">Descripcion</th>
       <th scope="col">Precio</th>
       <th scope="col">Imagenes</th>
-  
-    </tr>
+      </tr>
   </thead>
 <?php
 if(isset($_GET["sku"])){ 
@@ -60,6 +59,5 @@ echo"<td>".$dato['Precio']."</td>";
 echo"  </tbody>";
 }
 }
-
 ?>
 </table>
