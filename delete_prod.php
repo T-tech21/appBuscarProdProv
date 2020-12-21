@@ -4,18 +4,18 @@ $conn = new mysqli($servidor, $usuario, $password, $nombreBD);
 if ($conn->connect_error) {
     die("la conexión ha fallado: " . $conn->connect_error);
 }
-if(isset($_GET["proveedorwinmex"])){
-$sku=$_GET["sku"];	
+if(isset($_DELETE["catalogolars"])){
+$sku=$_UPDATE["sku"];	
+	}
+if(isset($_DELETE["catalogolars"])){
+$pbu=$_DELETE["buscar"];	
 	}
 
-if(isset($_GET["catalogolars"])){                  
-$sqln=mysqli_query($conn, "SELECT proveedorwinmex.sku,proveedorwinmex.Id,proveedorwinmex.Descripcion,proveedorwinmex.Precio,proveedorwinmex.Imagenes, catalogolars.sku,catalogolars.Descripcion,catalogolars.CodigoAlterno,catalogolars.Precio,catalogolars.Precio,catalogolars.Imagenes,catalogolars.Id FROM proveedorwinmex,catalogolars INNER JOIN  productos ON productos.Sku=catalogolars.Sku WHERE proveedorwinmex.sku LIKE '%$sku%' ");
-    
-    $result=mysqli_query($sqln,$sku) or die(mysqli_error());
-}
-    
-?>
 
+if(isset($_DELETE["catalogolars"])){                  
+$sqln=mysqli_query($conn,"DELETE Sku,Nombre,Tamaño,PrecioCosto,PrecioLocal,PrecioForaneo,PrecioBarra FROM catalogolars"));
+}
+?>
 <table class="Productos">
   <thead>
     <tr>
@@ -24,14 +24,15 @@ $sqln=mysqli_query($conn, "SELECT proveedorwinmex.sku,proveedorwinmex.Id,proveed
       <th scope="col">Descripcion</th>
       <th scope="col">Precio</th>
       <th scope="col">Imagenes</th>
-     
-    </tr>
+        <th scope="col">Nombre</th>
+        </tr>
   </thead>
 <?php
-if(isset($_GET["buscar"])){ 
+if(isset($_DELETE["buscar"])){ 
 $n=0;
 while ($dato=mysqli_fetch_array($sqln))
 {	$n++;
+
 
 echo"<tbody>";
 echo"<tr>";
@@ -41,6 +42,7 @@ echo"<td>".$dato['Sku']."</td>";
 echo"<td>".$dato['Descripcion']."</td>";
 echo"<td>".$dato['Precio']."</td>";
  echo"<td>".$dato['Imagenes']."</td>";
+ echo"<td>".$dato['Nombre']."</td>";
 echo"</tr>";
 echo"  </tbody>";
 }
