@@ -1,6 +1,6 @@
 <?php
 $servidor= "localhost";
 $usuario= "root";
-$password = "LarsA20L";
-$nombreBD= "phpmyadmin";
+$password = "*LarsA*20";
+$nombreBD= "productosprovni";
 ?>
