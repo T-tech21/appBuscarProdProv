@@ -1,6 +1,6 @@
 <?php
 include('conexion.php');
-$conn = new mysqli($servidor, $usuario, $password, $nombreBD);
+$conn = new mysqli($localhost, $usuario, $password, $ProductosProvNI);
 if ($conn->connect_error) {
     die("la conexión ha fallado: " . $conn->connect_error);
 }
@@ -18,9 +18,7 @@ if(isset($_GET["catalogolars"])){
 $sqln=mysqli_query($conn, "SELECT sku,Nombre,Tamaño,PrecioCosto ,PrecioLocal,PrecioForaneo,PrecioBarra FROM catalogolars); /* WHERE catalogolars.sku LIKE '%$sku%' ");*/
     
     $result=mysqli_query($sqln,$pbu=$_GET) or die(mysqli_error());
-}
-
-    
+}   
 ?>
 
 <table class="Productos">

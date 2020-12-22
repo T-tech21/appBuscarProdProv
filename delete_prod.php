@@ -8,9 +8,15 @@ if(isset($_DELETE["catalogolars"])){
 $sku=$_UPDATE["sku"];	
 	}
 if(isset($_DELETE["catalogolars"])){
-$pbu=$_DELETE["buscar"];	
+$pbu=$_DELETE["DELETE"];	
 	}
 
+    <form method="DELETE">
+  <div class="form-row align-items-center">
+    <div class="col-auto">
+      <label class="sr-only" for="inlineFormInput">Producto</label>
+      <input name="Sku" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Sku">  
+      <input name="Motivos" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Motivo de Eliminacion"> 
 
 if(isset($_DELETE["catalogolars"])){                  
 $sqln=mysqli_query($conn,"DELETE Sku,Nombre,Tamaño,PrecioCosto,PrecioLocal,PrecioForaneo,PrecioBarra FROM catalogolars"));
