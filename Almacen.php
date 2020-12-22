@@ -7,12 +7,12 @@
 <body>
 <div>
    <nav>
-     <li><a href="ConsultaDeInventario">Consulta de Inventario</a></li>
+        <li><a href="ConsultaDeInventario">Consulta de Inventario</a></li>
         <li><a href="ActualizarExistencias">Actualizar Existencias</a></li>
         <li><a href="Pedido">Pedidos</a></li>
        </nav>
    </div>
-<div>
+/*<div>
    <nav>
         <li><a href="CodigoAlterno">CodigoAlterno</a></li>
         <li><a href="Sku">Sku</a></li>
@@ -36,7 +36,7 @@
        <li><a href="PersonaActualiza">PersonaActualiza</a></li>  
 		
 </ul>
-        </nav>
+        </nav>*/
 
 <?php
 include('conexion.php');
@@ -187,3 +187,55 @@ echo"  </tbody>";
 }
 }
 ?>
+<?php
+include('conexion.php');
+$conn = new mysqli($servidor, $usuario, $password, $nombreBD);
+if ($conn->connect_error) {
+    die("la conexión ha fallado: " . $conn->connect_error);
+}
+if(isset($_UPDATE["Pedido"])){
+$pbu=$_UPDATE["Pedido"];	
+	}
+
+
+<form method="UPDATE">
+  <div class="form-row align-items-center">
+    <div class="col-auto">
+      <label class="sr-only" for="inlineFormInput">Producto</label>
+      <input name="PersonaSurtido" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Persona que surtio el Pedido">  
+      <input name="StatusPedido" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="StatusPedido">
+      <SELECT>
+      <li><a href="Surtido">Surtido</a></li>
+      <li><a href="SinRevisar">Sin Revisar</a></li>
+      <li><a href= "Incompleto">Incompleto</a><li>
+      <li><a href="Entregado">Entregado</a></li>
+      </SELECT>
+  <input name="Actualizar" type="hidden" class="form-control mb-2" id="inlineFormInput"value="v">
+    </div>
+      <div class="col-auto">
+      <button type="submit" class="btn btn-primary mb-2">Actualizar Producto</button>
+    </div>
+  </div>
+</form>
+  </li>
+</ul>
+$result=mysqli_query($sqln,$pbu=$_UPDATE) or die(mysqli_error());
+}
+?>
+<table class="Producto">
+  <thead>
+    <tr>
+      <th scope="col">Sku</th>
+      <th scope="col">Id</th>
+      <th scope="col">Descripcion</th>
+      <th scope="col">Precio</th>
+      <th scope="col">Imagenes</th>
+      </tr>
+  </thead>
+
+  </div>  
+    </body>
+
+</table>
+<footer>Ayuda</footer>
+</html>
