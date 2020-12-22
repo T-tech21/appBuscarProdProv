@@ -24,7 +24,7 @@ $sku=$_newproductoT["sku"];
           <input name="Claveunidad" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese ClaveUnidad">
             <input name="Compatibilidad" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Compatibilidad">
           <input name="Imagenes" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Imagen">  
-        <input name="Detaolles" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Detalles">
+        <input name="Detalles" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Detalles">
       <input name="Ingresar" type="hidden" class="form-control mb-2" id="inlineFormInput"value="v">
     </div>
       <div class="col-auto">

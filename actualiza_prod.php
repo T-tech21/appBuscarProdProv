@@ -4,7 +4,7 @@ $conn = new mysqli($servidor, $usuario, $password, $nombreBD);
 if ($conn->connect_error) {
     die("la conexión ha fallado: " . $conn->connect_error);
 }
-if(isset($_UPDATE["Producto"])){
+if(isset($_UPDATE["catalagolars"])){
 $sku=$_UPDATE["sku"];	
 	}
 
@@ -13,7 +13,17 @@ $sku=$_UPDATE["sku"];
   <div class="form-row align-items-center">
     <div class="col-auto">
       <label class="sr-only" for="inlineFormInput">Producto</label>
-      <input name="Codigolterno" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Nuevo CodigoAlterno">  
+      <input name="Sku" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Nuevo Sku">  
+      <input name="Nombre" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Nuevo Nombre">  
+      <input name="Tamaño" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Nuevo Tamaño">  
+      <input name="PrecioCosto" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Nuevo PrecioCosto">
+      <input name="precioLocal" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Nuevo PrecioLocal"> 
+      <input name="PrecioForaneo" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Nuevo PrecioForaneo ">
+      <input name="PrecioBarra" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Nuevo PrecioBarra">
+      <input name="Motivos de actualizacion" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Motivo de actualizacion">
+      <input name="PersonaActualiza" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="PersonaActualiza">  
+      <input name="FechaActualizacion" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="FechaActualizacion">  
+      /*<input name="Codigolterno" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Nuevo CodigoAlterno">  
         <input name="Sku" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Nuevo Sku">  
         <input name="Descripcion" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Nueva Descripcion">  
         <input name="Precio" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Nuevo Precio">
@@ -25,7 +35,7 @@ $sku=$_UPDATE["sku"];
           <input name="Claveunidad" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese ClaveUnidad">
             <input name="Compatibilidad" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Compatibilidad">
           <input name="Imagenes" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Imagen">  
-        <input name="Detalles" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Detalles">
+        <input name="Detalles" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Detalles">*/
           
       <input name="Ingresar" type="hidden" class="form-control mb-2" id="inlineFormInput"value="v">
     </div>
