@@ -52,8 +52,6 @@ $sqln=mysqli_query($conn, "SELECT CodigoAlterno,Sku,Descripcion,Precio,Existenci
     
     $result=mysqli_query($sqln,$pbu=$_GET) or die(mysqli_error());
 }
-
-    
 ?>
 
 <table class="Productos">

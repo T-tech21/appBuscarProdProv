@@ -26,10 +26,12 @@ $sqln=mysqli_query($conn,"DELETE Sku,Nombre,Tamaño,PrecioCosto,PrecioLocal,Prec
   <thead>
     <tr>
       <th scope="col">Sku</th>
-      <th scope="col">Id</th>
-      <th scope="col">Descripcion</th>
-      <th scope="col">Precio</th>
-      <th scope="col">Imagenes</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Tamaño</th>
+      <th scope="col">PrecioCosto</th>
+      <th scope="col">PrecioLocal</th>
+      <th scope="col">PrecioForaneo</th>
+      <th scope="col">PrecioBarra</th>
         <th scope="col">Nombre</th>
         </tr>
   </thead>
@@ -44,11 +46,12 @@ echo"<tbody>";
 echo"<tr>";
 echo"<th scope='row'>".$n."</th>";
 echo"<td>".$dato['Sku']."</td>";
- echo"<td>".$dato['Id']."</td>";
-echo"<td>".$dato['Descripcion']."</td>";
-echo"<td>".$dato['Precio']."</td>";
- echo"<td>".$dato['Imagenes']."</td>";
  echo"<td>".$dato['Nombre']."</td>";
+echo"<td>".$dato['Tamaño']."</td>";
+echo"<td>".$dato['PrecioCosto']."</td>";
+ echo"<td>".$dato['PrecioLocal']."</td>";
+ echo"<td>".$dato['PrecioForaneo']."</td>";
+ echo"<td>".$dato['PrecioBarra']."</td>";
 echo"</tr>";
 echo"  </tbody>";
 }
