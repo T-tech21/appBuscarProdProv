@@ -1,14 +1,14 @@
 <?php
 include('conexion.php');
-$conn = new mysqli($servidor, $usuario, $password, $nombreBD);
+$conn = new mysqli($localhost, $usuario, $password, $ProductosProvNI);
 if ($conn->connect_error) {
     die("la conexión ha fallado: " . $conn->connect_error);
 }
 if(isset($_DELETE["catalogolars"])){
-$sku=$_UPDATE["sku"];	
+$sku=$_UPDATE["Sku"];	
 	}
 if(isset($_DELETE["catalogolars"])){
-$pbu=$_DELETE["DELETE"];	
+$pbu=$_DELETE["Sku"];	
 	}
 
     <form method="DELETE">
@@ -34,7 +34,7 @@ $sqln=mysqli_query($conn,"DELETE Sku,Nombre,Tamaño,PrecioCosto,PrecioLocal,Prec
         </tr>
   </thead>
 <?php
-if(isset($_DELETE["buscar"])){ 
+if(isset($_DELETE["Sku"])){ 
 $n=0;
 while ($dato=mysqli_fetch_array($sqln))
 {	$n++;

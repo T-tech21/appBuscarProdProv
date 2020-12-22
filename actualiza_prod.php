@@ -1,6 +1,6 @@
 <?php
 include('conexion.php');
-$conn = new mysqli($servidor, $usuario, $password, $ProductosProvNI);
+$conn = new mysqli($localhost, $usuario, $password, $ProductosProvNI);
 if ($conn->connect_error) {
     die("la conexión ha fallado: " . $conn->connect_error);
 }
@@ -20,6 +20,7 @@ $pbu=$_UPDATE["sku"];
       <input name="precioLocal" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Nuevo PrecioLocal"> 
       <input name="PrecioForaneo" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Nuevo PrecioForaneo ">
       <input name="PrecioBarra" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Nuevo PrecioBarra">
+      //*Fragmento que se incluye en otra tabla de actualizacion para registro o enviar notificacion a correo electronico 
       <input name="Motivos de actualizacion" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Motivo de actualizacion">
       <input name="PersonaActualiza" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="PersonaActualiza">  
       <input name="FechaActualizacion" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="FechaActualizacion">  

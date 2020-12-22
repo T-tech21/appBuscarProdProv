@@ -40,7 +40,7 @@
 
 <?php
 include('conexion.php');
-$conn = new mysqli($servidor, $usuario, $password, $nombreBD);
+$conn = new mysqli($localhost, $usuario, $password, $Control);
 if ($conn->connect_error) {
     die("la conexión ha fallado: " . $conn->connect_error);
 }
@@ -92,7 +92,7 @@ echo"  </tbody>";
 
 <?php
 include('conexion.php');
-$conn = new mysqli($servidor, $usuario, $password, $nombreBD);
+$conn = new mysqli($localhost, $usuario, $password, $Control);
 if ($conn->connect_error) {
     die("la conexión ha fallado: " . $conn->connect_error);
 }
@@ -138,7 +138,7 @@ $result=mysqli_query($sqln,$pbu=$_UPDATE) or die(mysqli_error());
 
 <?php
 include('conexion.php');
-$conn = new mysqli($servidor, $usuario, $password, $nombreBD);
+$conn = new mysqli($localhost, $usuario, $password, $Control);
 if ($conn->connect_error) {
     die("la conexión ha fallado: " . $conn->connect_error);
 }
@@ -189,7 +189,7 @@ echo"  </tbody>";
 ?>
 <?php
 include('conexion.php');
-$conn = new mysqli($servidor, $usuario, $password, $nombreBD);
+$conn = new mysqli($localhost, $usuario, $password, $Control);
 if ($conn->connect_error) {
     die("la conexión ha fallado: " . $conn->connect_error);
 }
@@ -205,9 +205,14 @@ $pbu=$_UPDATE["Pedido"];
       <input name="PersonaSurtido" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Persona que surtio el Pedido">  
       <input name="StatusPedido" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="StatusPedido">
       <SELECT>
+      //* verificar los estatus que se tienen para los pedidos y no se ingrese mas informacion
       <li><a href="Surtido">Surtido</a></li>
       <li><a href="SinRevisar">Sin Revisar</a></li>
       <li><a href= "Incompleto">Incompleto</a><li>
+        <input name="Mercancia Faltante" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Piezas Faltantes">  
+
+        //*conexion a correo electronico para anexar informacion de pedido Faltante y se pueda surtir en cuanto este disponible el Producto
+        <a><submit="@lars.com.mx" >
       <li><a href="Entregado">Entregado</a></li>
       </SELECT>
   <input name="Actualizar" type="hidden" class="form-control mb-2" id="inlineFormInput"value="v">
