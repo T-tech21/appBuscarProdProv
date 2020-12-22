@@ -4,7 +4,7 @@ $conn = new mysqli($localhost, $usuario, $password, $ProductosProvNI);
 if ($conn->connect_error) {
     die("la conexión ha fallado: " . $conn->connect_error);
 }
-if(isset($_UPDATE["catalagolars"])){
+if(isset($_UPDATE["catalogolars"])){
 $pbu=$_UPDATE["sku"];	
 	}
 
@@ -50,6 +50,10 @@ $pbu=$_UPDATE["sku"];
 </form>
   </li>
 </ul>
+if(isset($_UPDATE["newproducto"])){                  
+$sqln=mysqli_query($conn, "UPDATE Sku,Nombre,Tamaño,PrecioCosto,PrecioLocal,PrecioForaneo,PrecioBarra FROM catalogolars); /* WHERE catalogolars.sku LIKE '%$sku%' ");*/
+  
+
 $result=mysqli_query($sqln,$pbu=$_UPDATE) or die(mysqli_error());
 }
 ?>
@@ -57,10 +61,12 @@ $result=mysqli_query($sqln,$pbu=$_UPDATE) or die(mysqli_error());
   <thead>
     <tr>
       <th scope="col">Sku</th>
-      <th scope="col">Id</th>
-      <th scope="col">Descripcion</th>
-      <th scope="col">Precio</th>
-      <th scope="col">Imagenes</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Tamaño</th>
+      <th scope="col">PrecioCosto</th>
+      <th scope="col">PrecioLocal</th>
+      <th scope="col">PrecioForaneo</th>
+      <th scope="col">PrecioBarra</th>
       </tr>
   </thead>
 
