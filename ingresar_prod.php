@@ -1,3 +1,22 @@
+<!DOCTYPE html>
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+ <link rel="stylesheet" href="style.css" >
+<body>
+<div>
+   <nav>
+        <li><a href="IngresarProducto">Ingresar  Nuevo Producto</a></li>
+        <li><a href="Consultar Productos">Consultar Productos</a></li>
+
+        /*consulta de productos nuevos que recientemente se registraron*/
+
+
+        <li><a href="Productos Nuevos">Productos Nuevos</a></li>
+       </nav>
+   </div>
+
 <?php
 include('conexion.php');
 $conn = new mysqli($servidor, $usuario, $password, $nombreBD);

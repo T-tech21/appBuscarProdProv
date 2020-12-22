@@ -97,7 +97,7 @@ if ($conn->connect_error) {
     die("la conexión ha fallado: " . $conn->connect_error);
 }
 if(isset($_UPDATE["Producto"])){
-$pbu=$_UPDATE["Existencias"];	
+$pbu=$_UPDATE["Producto"];	
 	}
 
 

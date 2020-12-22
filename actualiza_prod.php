@@ -26,6 +26,7 @@ $pbu=$_UPDATE["sku"];
       <input name="FechaActualizacion" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="FechaActualizacion">  
       <input name="" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="FechaActualizacion">  
       //*Fragmento de codigo para consulta de tabla Producto
+
       /*<input name="Codigolterno" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Nuevo CodigoAlterno">  
         <input name="Sku" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Nuevo Sku">  
         <input name="Descripcion" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Nueva Descripcion">  
