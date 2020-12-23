@@ -237,15 +237,7 @@ $result=mysqli_query($sqln,$pbu=$_UPDATE) or die(mysqli_error());
       </tr>
   </thead>
 
-  </div>  
-    </body>
-
-</table>
-<footer>Ayuda</footer>
-</html>
-
-
-<?php
+    <?php
 include('conexion.php');
 $conn = new mysqli($localhost, $usuario, $password, $Control);
 if ($conn->connect_error) {
@@ -272,3 +264,11 @@ $sqln=mysqli_query($conn, "INSERT Sku,Nombre,CantidadNegada,FechaNegacion,Motivo
         <input name="Motivo" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Motivos">
         <input name="FolioPedido" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="FolioPedido">
         <input name="Detalles" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Detalles">
+//*Enviar mensaje por correo para dar seguimiento al pedido negado o faltante
+        
+         </div>  
+    </body>
+
+</table>
+<footer>Ayuda</footer>
+</html>
