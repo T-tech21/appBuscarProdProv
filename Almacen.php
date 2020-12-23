@@ -196,7 +196,6 @@ if(isset($_UPDATE["Pedido"])){
 $pbu=$_UPDATE["Pedido"];	
 	}
 
-
 <form method="UPDATE">
   <div class="form-row align-items-center">
     <div class="col-auto">
@@ -252,7 +251,6 @@ $sqln=mysqli_query($conn, "INSERT Sku,Nombre,CantidadNegada,FechaNegacion,Motivo
     $result=mysqli_query($sqln,$pbu=$_GET) or die(mysqli_error());
 }
 ?>
-
 <form method="INSERT">
   <div class="form-row align-items-center">
     <div class="col-auto">

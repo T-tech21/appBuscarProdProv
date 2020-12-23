@@ -92,7 +92,7 @@ $sqln=mysqli_query($conn, "INSERT Sku,Nombre,Tamaño,Descripcion,Marca,Proveedor
 $result=mysqli_query($sqln,$sku) or die(mysqli_error());
 }
 ?>
-         <?php
+ <?php
 include('conexion.php');
 $conn = new mysqli($localhost, $usuario, $password, $Control);
 if ($conn->connect_error) {
