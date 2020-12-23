@@ -26,7 +26,7 @@ if ($conn->connect_error) {
     die("la conexión ha fallado: " . $conn->connect_error);
 }
 if(isset($_GET["catalogolars"])){
-$pbu=$_newproductoT["sku"];	
+$pbu=$_catalogolars["sku"];	
 	}      
        <form method="GET">
   <div class="form-row align-items-center">
@@ -45,7 +45,7 @@ $result=mysqli_query($sqln,$sku) or die(mysqli_error());
   <div class="form-row align-items-center">
     <div class="col-auto">
       <label class="sr-only" for="inlineFormInput">Pedidos</label>
-      <input name="Consulta Producto" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Sku">  
+      <input name="C" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Sku">  
            
         /*verificar si es una opcion el IdCliente en lugar del nombre para consulta de personal*/
         
@@ -58,15 +58,15 @@ if ($conn->connect_error) {
     die("la conexión ha fallado: " . $conn->connect_error);
 }
 if(isset($_GET["consultaPedido"])){
-$pbu=$_newproductoT["sku"];	
+$pbu=$_consultaPedido["IdCliente"];	
 	}      
        <form method="GET">
   <div class="form-row align-items-center">
     <div class="col-auto">
       <label class="sr-only" for="inlineFormInput">Inventario</label>
       <input name="ConsultaPedido" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Sku">  
-        if(isset($_GET["Pedido"])){                  
-$sqln=mysqli_query($conn, "SELECT IdCliente,Folio,StatusPedido,VerificacionPedido,Total,FechaPedido,Pedido,PersonaAutoriza FROM Pedido); /* WHERE catalogolars.sku LIKE '%$pbu%' ");*/
+        if(isset($_GET["ConsultaPedido"])){                  
+$sqln=mysqli_query($conn, "SELECT IdCliente,Folio,StatusPedido,VerificacionPedido,Total,FechaPedido,Pedido,PersonaAutoriza FROM Pedido); /* WHERE catalogolars.IdCliente LIKE '%$pbu%' ");*/
   
 $result=mysqli_query($sqln,$sku) or die(mysqli_error());
 }
