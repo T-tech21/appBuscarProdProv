@@ -13,8 +13,12 @@
        /*ingresar informacion de los productos vendidos por dia y ventas por dia*/
        
        <li><a href="IngProdAdVendidos">Productos Adicionales Vendidos</a></li>
-       <li><a href="IngresodePedido">Ingreso de Pedido</a></li>
+       <li><a href="IngresoDePedido">Ingreso de Pedido</a></li>
        
+       //*Se anexa como mejora, para choferes y mayor control
+       
+       <li><a href= "SolicitudDePedidoAdicional">Solicitud de Pedido Adicional</a></li>
+        <li><a href="IngresoDePosibleCliente">Ingreso de posible Cliente</a></li>   
  <?php
 include('conexion.php');
 $conn = new mysqli($localhost, $usuario, $password, $ProductosProvNI);
@@ -42,8 +46,7 @@ $result=mysqli_query($sqln,$sku) or die(mysqli_error());
     <div class="col-auto">
       <label class="sr-only" for="inlineFormInput">Pedidos</label>
       <input name="Consulta Producto" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Sku">  
-   
-        
+           
         /*verificar si es una opcion el IdCliente en lugar del nombre para consulta de personal*/
         
         /*consulta de pedido*/
@@ -67,15 +70,13 @@ $sqln=mysqli_query($conn, "SELECT IdCliente,Folio,StatusPedido,VerificacionPedid
   
 $result=mysqli_query($sqln,$sku) or die(mysqli_error());
 }
-?>
-        
+?>        
        <form method="GET">
   <div class="form-row align-items-center">
     <div class="col-auto">
       <label class="sr-only" for="inlineFormInput">Producto</label>
       <input name="IngFolioPedido" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese  Folio de Pedido">  
-        
-   <?php
+           <?php
 include('conexion.php');
 $conn = new mysqli($localhost, $usuario, $password, $Control);
 if ($conn->connect_error) {
