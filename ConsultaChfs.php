@@ -65,5 +65,6 @@ $result=mysqli_query($sqln,$sku) or die(mysqli_error());
         <input name="FechaPedido" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="FechaPedido"> 
         <input name="Pedido" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Pedido"> 
         
+        //*Envio de notificacion por correo electronico si el cliente se registro, copia a el, a almacen, a administracion
        </nav>
    </div>
