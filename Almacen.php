@@ -10,6 +10,7 @@
         <li><a href="ConsultaDeInventario">Consulta de Inventario</a></li>
         <li><a href="ActualizarExistencias">Actualizar Existencias</a></li>
         <li><a href="Pedido">Pedidos</a></li>
+       <li><a href="ProductoNegado">Productos Negados</a></li>
        </nav>
    </div>
 /*<div>
@@ -242,3 +243,32 @@ $result=mysqli_query($sqln,$pbu=$_UPDATE) or die(mysqli_error());
 </table>
 <footer>Ayuda</footer>
 </html>
+
+
+<?php
+include('conexion.php');
+$conn = new mysqli($localhost, $usuario, $password, $Control);
+if ($conn->connect_error) {
+    die("la conexión ha fallado: " . $conn->connect_error);
+}
+if(isset($_INSERT["ProductoNegado"])){
+$pbu=$_GET["sku"];	
+	}
+if(isset($_GET["ProductoNegado"])){                  
+$sqln=mysqli_query($conn, "INSERT Sku,Nombre,CantidadNegada,FechaNegacion,Motivo,FolioPedido,Detalles FROM ProductoNegado); /* WHERE catalogolars.sku LIKE '%$sku%' ");*/
+    
+    $result=mysqli_query($sqln,$pbu=$_GET) or die(mysqli_error());
+}
+?>
+
+<form method="INSERT">
+  <div class="form-row align-items-center">
+    <div class="col-auto">
+      <label class="sr-only" for="inlineFormInput">Producto</label>
+      <input name="Sku" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Sku">
+        <input name="NombreCliente" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Nombre del Cliente">
+        <input name="CantidadNegada" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Cantidad Negada">
+        <input name="FechaNegacion" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Fecha de Negado">
+        <input name="Motivo" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Motivos">
+        <input name="FolioPedido" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="FolioPedido">
+        <input name="Detalles" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Detalles">

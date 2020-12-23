@@ -14,6 +14,7 @@
        
        <li><a href="IngProdAdVendidos">Productos Adicionales Vendidos</a></li>
        <li><a href="IngresodePedido">Ingreso de Pedido</a></li>
+       <li><a href="ProductoNegado">Producto Negado</a></li>
  <?php
 include('conexion.php');
 $conn = new mysqli($localhost, $usuario, $password, $ProductosProvNI);
