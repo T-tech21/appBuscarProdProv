@@ -22,8 +22,6 @@
               <input type="button" value="Cancelar" size="20">
           </form>
 </html>
-
-
 <?php
 include('conexion.php');
 $conn = new mysqli($localhost, $usuario, $password, $Control);
@@ -41,6 +39,9 @@ $pbu=$_Pedido["sku"];
       <input name="IdCliente" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese IdCliente">  
         <input name="Folio" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Folio">  
         <input name="Pedido" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Pedido">  <input name="FechaPedido" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Seleccione fecha pedido">
+          //*calendario
+          
+          //*Asignar total de pedido
           
         </div>
       <div class="col-auto">
@@ -50,33 +51,25 @@ $pbu=$_Pedido["sku"];
 </form>
   </li>
 </ul>
-if(isset($_INSERT["newproducto"])){                  
-$sqln=mysqli_query($conn, "INSERT CodigoAlterno,Sku,Descripcion,PrecioCosto,PrecioLocal,PrecioForaneo,PrecioBarra,Existencias,Marca,Proveedor,Categoria,ClaveProdServ,ClaveUnidad,Compatibilidad,Imagen,Detalles FROM newproducto); /* WHERE catalogolars.sku LIKE '%$sku%' ");*/
-  
+if(isset($_INSERT["Pedido"])){                  
+$sqln=mysqli_query($conn, "INSERT IdCliente,Folio,Pedido,FechaPedido FROM Pedido); 
+
 $result=mysqli_query($sqln,$pbu) or die(mysqli_error());
 }
 ?>
 /*agregar notificacion a correo electronico de actualizacion */
 
-<table class="newproducto">
+<table class="Pedido">
   <thead>
     <tr>
-      <th scope="col">CodigoAlterno</th>
-      <th scope="col">Sku</th>
-      <th scope="col">Descripcion</th>
-      <th scope="col">Existencias</th>
-      <th scope="col">Marca</th>
-      <th scope="col">Proveedor</th>
-      <th scope="col">Categoria</th>
-      <th scope="col">ClaveProdServ</th>
-      <th scope="col">ClaveUnidad</th>
-      <th scope="col">Compatibilidad</th>
-      <th scope="col">Imagen</th>
-      <th scope="col">Detalles</th>
+      <th scope="col">IdCliente</th>
+      <th scope="col">Folio</th>
+      <th scope="col">Pedido</th>
+      <th scope="col">FechaPedido</th>
       </tr>
   </thead>
 <?php
-if(isset($_POST["newproducto"])){ 
+if(isset($_POST["Pedido"])){ 
 $n=0;
 while ($dato=mysqli_fetch_array($sqln))
 {	$n++;
@@ -84,24 +77,15 @@ while ($dato=mysqli_fetch_array($sqln))
 echo"<tbody>";
 echo"<tr>";
 echo"<th scope='row'>".$n."</th>";
-echo"<td>".$dato['CodigoAlterno']."</td>";
-echo"<td>".$dato['Sku']."</td>";
-echo"<td>".$dato['Descripcion']."</td>";
-echo"<td>".$dato['Existencias']."</td>";
-echo"<td>".$dato['Marca']."</td>";
-echo"<td>".$dato['Proveedor']."</td>";
-echo"<td>".$dato['Categoria']."</td>";
-echo"<td>".$dato['ClaveProdServ']."</td>";
-echo"<td>".$dato['ClaveUnidad']."</td>";
-echo"<td>".$dato['Compatibilidad']."</td>";
-echo"<td>".$dato['Imagen']."</td>";
-echo"<td>".$dato['Detalles']."</td>";
+echo"<td>".$dato['IdCliente']."</td>";
+echo"<td>".$dato['Folio']."</td>";
+echo"<td>".$dato['Pedido']."</td>";
+echo"<td>".$dato['FechaPedido']."</td>";
 echo"</tr>";
 echo"</tbody>";
 }
 }
 ?>
-
     $result=mysqli_query($sqln,$pbu) or die(mysqli_error());
 }
 ?>
