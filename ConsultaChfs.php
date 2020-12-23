@@ -56,6 +56,14 @@ $result=mysqli_query($sqln,$sku) or die(mysqli_error());
  
        //*Envio por correo de ventas por dia, copias
        
+  <form method="POST">
+  <div class="form-row align-items-center">
+    <div class="col-auto">
+      <label class="sr-only" for="inlineFormInput">Pedido</label>
+      <input name="IdCliente" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese IdCliente">  
+       <input name="Folio" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Folio">  
+        <input name="FechaPedido" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="FechaPedido"> 
+        <input name="Pedido" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Pedido"> 
         
        </nav>
    </div>
