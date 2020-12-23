@@ -7,15 +7,16 @@ if ($conn->connect_error) {
 if(isset($_GET["proveedorwinmex"])){
 $pbu=$_GET["sku"];	
 	}
-//*Consulta para unir catalogo lars y catalogo proveedor winmex
+//*Consulta para unir catalogo lars y catalogo proveedor winmex en tabla productos
+
 /*if(isset($_GET["catalogolars"])){                  
-$sqln=mysqli_query($conn, "SELECT ProveedorWinmex.sku,ProveedorWinmex.Id,ProveedorWinmex.Descripcion,ProveedorWinmex.Precio,ProveedorWinmex.Imagenes, catalogolars.sku,catalogolars.Descripcion,catalogolars.CodigoAlterno,catalogolars.Precio,catalogolars.Precio,catalogolars.Imagenes,catalogolars.Id FROM proveedorwinmex,catalogolars INNER JOIN  NewProductos ON NewProductos.Sku=catalogolars.Sku WHERE ProveedorWinmex.sku LIKE '%$sku%' ");
+$sqln=mysqli_query($conn, "SELECT ProveedorWinmex.sku,ProveedorWinmex.CodigoAlterno,ProveedorWinmex.Descripcion,ProveedorWinmex.Precio1,ProveedorWinmex.Precio2,ProveedorWinmex.Precio3,ProveedorWinmex.Precio4, catalogolars.sku,catalogolars.Nombre,catalogolars.Tamaño,catalogolars.PrecioCosto,catalogolars.PrecioLocal,catalogolars.PrecioForaneo,catalogolars.PrecioBarra FROM proveedorwinmex,catalogolars INNER JOIN  NewProductos ON NewProducto.Sku=catalogolars.Sku WHERE ProveedorWinmex.sku LIKE '%$sku%' ");
     
     $result=mysqli_query($sqln,$sku) or die(mysqli_error());
 }*/
 
 if(isset($_GET["catalogolars"])){                  
-$sqln=mysqli_query($conn, "SELECT sku,Nombre,Tamaño,PrecioCosto ,PrecioLocal,PrecioForaneo,PrecioBarra FROM catalogolars); /* WHERE catalogolars.sku LIKE '%$sku%' ");*/
+$sqln=mysqli_query($conn, "SELECT Sku,Nombre,Tamaño,PrecioCosto ,PrecioLocal,PrecioForaneo,PrecioBarra FROM catalogolars); /* WHERE catalogolars.sku LIKE '%$sku%' ");*/
     
     $result=mysqli_query($sqln,$pbu=$_GET) or die(mysqli_error());
 }   

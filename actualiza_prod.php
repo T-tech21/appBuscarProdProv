@@ -8,8 +8,7 @@ if(isset($_UPDATE["catalogolars"])){
 $pbu=$_UPDATE["sku"];	
 	}
 
-
-<form method="UPDATE">
+  <form method="UPDATE">
   <div class="form-row align-items-center">
     <div class="col-auto">
       <label class="sr-only" for="inlineFormInput">Producto</label>
@@ -24,7 +23,7 @@ $pbu=$_UPDATE["sku"];
       <input name="Motivos de actualizacion" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Motivo de actualizacion">
       <input name="PersonaActualiza" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="PersonaActualiza">  
       <input name="FechaActualizacion" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="FechaActualizacion">  
-      <input name="" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="FechaActualizacion">  
+      <input name="" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="">  
       //*Fragmento de codigo para consulta de tabla Producto
 
       /*<input name="Codigolterno" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Nuevo CodigoAlterno">  
@@ -32,13 +31,13 @@ $pbu=$_UPDATE["sku"];
         <input name="Descripcion" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Nueva Descripcion">  
         <input name="Precio" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Nuevo Precio">
         <input name="Existencias" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Existencias">
-              <input name="Marca" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Marca">
-              <input name="Proveedor" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Proveedor">
+        <input name="Marca" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Marca">
+        <input name="Proveedor" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Proveedor">
           <input name="Categoria" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Categoria">
           <input name="ClaveProdServ" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Clave del Producto o Servicio">
           <input name="Claveunidad" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese ClaveUnidad">
-            <input name="Compatibilidad" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Compatibilidad">
-          <input name="Imagenes" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Imagen">  
+           <input name="Compatibilidad" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Compatibilidad">
+          <input name="Imagen" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Imagen">  
         <input name="Detalles" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Detalles">*/
           
       <input name="Actualizar" type="hidden" class="form-control mb-2" id="inlineFormInput"value="v">
@@ -53,7 +52,6 @@ $pbu=$_UPDATE["sku"];
 if(isset($_UPDATE["newproducto"])){                  
 $sqln=mysqli_query($conn, "UPDATE Sku,Nombre,Tamaño,PrecioCosto,PrecioLocal,PrecioForaneo,PrecioBarra FROM catalogolars); /* WHERE catalogolars.sku LIKE '%$sku%' ");*/
   
-
 $result=mysqli_query($sqln,$pbu=$_UPDATE) or die(mysqli_error());
 }
 ?>

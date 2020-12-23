@@ -10,7 +10,8 @@
 				<div class="col-auto">
 					<button type="submit" class="btn btn-primary mb-2">Buscar Ahora</button>
 				</div>
-			</div>
-		</form>
+						
+				</div>
+</form>
 	</li>
 	</ul>

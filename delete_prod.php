@@ -18,6 +18,7 @@ $pbu=$_DELETE["Sku"];
       <input name="Sku" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Sku">  
       <input name="Motivos" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Motivo de Eliminacion"> 
 
+      //*Enviar por correo electronico el sku que se ha dado de baja
 if(isset($_DELETE["catalogolars"])){                  
 $sqln=mysqli_query($conn,"DELETE Sku,Nombre,Tamaño,PrecioCosto,PrecioLocal,PrecioForaneo,PrecioBarra FROM catalogolars"));
 }
@@ -32,7 +33,6 @@ $sqln=mysqli_query($conn,"DELETE Sku,Nombre,Tamaño,PrecioCosto,PrecioLocal,Prec
       <th scope="col">PrecioLocal</th>
       <th scope="col">PrecioForaneo</th>
       <th scope="col">PrecioBarra</th>
-        <th scope="col">Nombre</th>
         </tr>
   </thead>
 <?php
@@ -40,7 +40,6 @@ if(isset($_DELETE["Sku"])){
 $n=0;
 while ($dato=mysqli_fetch_array($sqln))
 {	$n++;
-
 
 echo"<tbody>";
 echo"<tr>";
@@ -57,5 +56,4 @@ echo"  </tbody>";
 }
 }
 ?>
-
 </table>

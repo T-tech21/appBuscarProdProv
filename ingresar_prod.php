@@ -12,7 +12,6 @@
 
         //*consulta de productos nuevos que recientemente se registraron*/
 
-
         <li><a href="Productos Nuevos">Productos Nuevos</a></li>
        </nav>
    </div>
@@ -24,7 +23,7 @@ if ($conn->connect_error) {
     die("la conexión ha fallado: " . $conn->connect_error);
 }
 if(isset($_POST["newproducto"])){
-$sku=$_newproductoT["sku"];	
+$pbu=$_newproductoT["sku"];	
 	}
     //*incluir el insert a la consulta
 <form method="POST">
@@ -34,14 +33,17 @@ $sku=$_newproductoT["sku"];
       <input name="Codigolterno" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese CodigoAlterno">  
         <input name="Sku" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Sku">  
         <input name="Descripcion" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Descripcion">  
-        <input name="Precio" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Precio">
+        <input name="Precio" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese PrecioCosto">
+        <input name="Precio" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese PrecioLocal">
+        <input name="Precio" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese PrecioForaneo">
+        <input name="Precio" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese PrecioBarra">
         <input name="Existencias" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Existencias">
-              <input name="Marca" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Marca">
-              <input name="Proveedor" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Proveedor">
-          <input name="Categoria" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Categoria">
-          <input name="ClaveProdServ" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Clave del Producto o Servicio">
-          <input name="Claveunidad" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese ClaveUnidad">
-            <input name="Compatibilidad" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Compatibilidad">
+         <input name="Marca" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Marca">
+         <input name="Proveedor" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Proveedor">
+         <input name="Categoria" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Categoria">
+         <input name="ClaveProdServ" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Clave del Producto o Servicio">
+         <input name="Claveunidad" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese ClaveUnidad">
+           <input name="Compatibilidad" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Compatibilidad">
           <input name="Imagenes" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Imagen">  
         <input name="Detalles" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Detalles">
       <input name="Ingresar" type="hidden" class="form-control mb-2" id="inlineFormInput"value="v">
@@ -54,12 +56,12 @@ $sku=$_newproductoT["sku"];
   </li>
 </ul>
 if(isset($_INSERT["newproducto"])){                  
-$sqln=mysqli_query($conn, "INSERT CodigoAlterno,Sku,Descripcion,Existencias ,Marca,Proveedor,Categoria,ClaveProdServ,ClaveUnidad,Compatibilidad,Imagen,Detalles FROM newproducto); /* WHERE catalogolars.sku LIKE '%$sku%' ");*/
+$sqln=mysqli_query($conn, "INSERT CodigoAlterno,Sku,Descripcion,PrecioCosto,PrecioLocal,PrecioForaneo,PrecioBarra,Existencias,Marca,Proveedor,Categoria,ClaveProdServ,ClaveUnidad,Compatibilidad,Imagen,Detalles FROM newproducto); /* WHERE catalogolars.sku LIKE '%$sku%' ");*/
   
-$result=mysqli_query($sqln,$sku) or die(mysqli_error());
+$result=mysqli_query($sqln,$pbu) or die(mysqli_error());
 }
 ?>
-//*agregar notificacion a correo electronico de actualizacion */
+/*agregar notificacion a correo electronico de actualizacion */
 
 <table class="newproducto">
   <thead>
@@ -105,7 +107,7 @@ echo"</tbody>";
 }
 ?>
 
-    $result=mysqli_query($sqln,$sku) or die(mysqli_error());
+    $result=mysqli_query($sqln,$pbu) or die(mysqli_error());
 }
 ?>
 <table class="Productos">
