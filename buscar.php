@@ -1,3 +1,40 @@
+<!DOCTYPE>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Cátalogo de productos </title>
+    </head>
+  <body> 
+<form action = "conexion.php "  method = "POST"  >
+       <h2 label for="Busqueda">Buscar Producto:</label><select name="Buscar producto">
+            <option selected value="0">Elige una opción</option>
+            
+                <optgroup label="">
+                    <option value="1">producto</option>
+                    <option value="2">pieza</option>
+                    <option value="3">sku</option>
+                    <option value="4">precio</option>
+                    <option value="5">disponibilidad</option>
+                    <option value="6">proveedor</option>
+                    <option value="7">marca</option>
+                    <option value="8">descripcion</option>
+                    
+                </optgroup>
+        </select>
+    
+         <br>
+        <input type="button" value="Buscar" size="20"></input>       
+         <input type="button" value="Regresar" size="20"></input>
+        
+    </form>
+    <form>
+        </body>
+<h2 label for = "Resultados de Búsqueda"></h2>
+         </form>
+
+
 <?php
 include('conexion.php');
 $conn = new mysqli($localhost, $usuario, $password, $ProductosProvNI);
@@ -56,3 +93,8 @@ echo"  </tbody>";
 }
 ?>
 </table>
+
+<footer>
+    <img src="">
+</footer>
+</html>

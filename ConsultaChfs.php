@@ -21,7 +21,7 @@ $conn = new mysqli($localhost, $usuario, $password, $ProductosProvNI);
 if ($conn->connect_error) {
     die("la conexión ha fallado: " . $conn->connect_error);
 }
-if(isset($_GETT["catalogolars"])){
+if(isset($_GET["catalogolars"])){
 $pbu=$_newproductoT["sku"];	
 	}      
        <form method="GET">
@@ -75,7 +75,6 @@ $result=mysqli_query($sqln,$sku) or die(mysqli_error());
       <label class="sr-only" for="inlineFormInput">Producto</label>
       <input name="IngFolioPedido" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese  Folio de Pedido">  
         
-        
    <?php
 include('conexion.php');
 $conn = new mysqli($localhost, $usuario, $password, $Control);
@@ -85,10 +84,9 @@ if ($conn->connect_error) {
 if(isset($_INSERT["IngProdAdVendidos"])){
 $pbu=$_IngProdAdVendidosT["sku"];	
 	}
-    //*incluir el insert a la consulta
-if(isset($_INSERT["VentasPorDia"])){                  
-$sqln=mysqli_query($conn, "INSERT Sku,Nombre,Tamaño,Descripcion,Marca,Proveedor,Categoria,ClaveProdServ,ClaveUnidad,Cantidad,Total,AreaVenta FROM VentasPorDia); /* WHERE catalogolars.sku LIKE '%$sku%' ");*/
   
+if(isset($_INSERT["VentasPorDia"])){                  
+$sqln=mysqli_query($conn, "INSERT Sku,Nombre,Tamaño,Descripcion,Marca,Proveedor,Categoria,ClaveProdServ,ClaveUnidad,Cantidad,Total,AreaVenta FROM VentasPorDia);   
 $result=mysqli_query($sqln,$sku) or die(mysqli_error());
 }
 ?>
@@ -103,8 +101,7 @@ $pbu=$_IngProdAdVendidosT["sku"];
 	}
     
 if(isset($_INSERT["IngresodePedido"])){                  
-$sqln=mysqli_query($conn, "INSERT IdCliente,Folio,Total,FechaPedido,Pedido FROM Pedido); /* WHERE catalogolars.sku LIKE '%$sku%' ");*/
-  
+$sqln=mysqli_query($conn, "INSERT IdCliente,Folio,Total,FechaPedido,Pedido FROM Pedido); 
 $result=mysqli_query($sqln,$sku) or die(mysqli_error());
 }
 ?>

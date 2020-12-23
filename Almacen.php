@@ -222,6 +222,10 @@ $pbu=$_UPDATE["Pedido"];
 </form>
   </li>
 </ul>
+          
+if(isset($_UPDATE["Pedido"])){                  
+$sqln=mysqli_query($conn, "UPDATE Folio,AreaCotejo,PersonaSurtido,StatusPedido,VerificacionPedido,Total,FechaPedido,Pedido,PersonaAutoriza FROM Pedido); 
+
 $result=mysqli_query($sqln,$pbu=$_UPDATE) or die(mysqli_error());
 }
 ?>
@@ -236,22 +240,7 @@ $result=mysqli_query($sqln,$pbu=$_UPDATE) or die(mysqli_error());
       </tr>
   </thead>
 
-    <?php
-include('conexion.php');
-$conn = new mysqli($localhost, $usuario, $password, $Control);
-if ($conn->connect_error) {
-    die("la conexión ha fallado: " . $conn->connect_error);
-}
-if(isset($_INSERT["ProductoNegado"])){
-$pbu=$_GET["sku"];	
-	}
-if(isset($_GET["ProductoNegado"])){                  
-$sqln=mysqli_query($conn, "INSERT Sku,Nombre,CantidadNegada,FechaNegacion,Motivo,FolioPedido,Detalles FROM ProductoNegado); /* WHERE catalogolars.sku LIKE '%$sku%' ");*/
-    
-    $result=mysqli_query($sqln,$pbu=$_GET) or die(mysqli_error());
-}
-?>
-<form method="INSERT">
+    <form method="INSERT">
   <div class="form-row align-items-center">
     <div class="col-auto">
       <label class="sr-only" for="inlineFormInput">Producto</label>
@@ -267,6 +256,21 @@ $sqln=mysqli_query($conn, "INSERT Sku,Nombre,CantidadNegada,FechaNegacion,Motivo
          </div>  
     </body>
 
+    <?php
+include('conexion.php');
+$conn = new mysqli($localhost, $usuario, $password, $Control);
+if ($conn->connect_error) {
+    die("la conexión ha fallado: " . $conn->connect_error);
+}
+if(isset($_INSERT["ProductoNegado"])){
+$pbu=$_GET["sku"];	
+	}
+if(isset($_INSERT["ProductoNegado"])){                  
+$sqln=mysqli_query($conn, "INSERT Sku,Nombre,CantidadNegada,FechaNegacion,Motivo,FolioPedido,Detalles FROM ProductoNegado); 
+    
+    $result=mysqli_query($sqln,$pbu=$_GET) or die(mysqli_error());
+}
+?>
 </table>
 <footer>Ayuda</footer>
 </html>
