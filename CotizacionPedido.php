@@ -55,7 +55,6 @@ if(isset($_UPDATE["catalogolars"])){
 $pbu=$_UPDATE["sku"];	
 	}
 
-
 $To =("astrid_24@live.com.mx,astrid319425@gmail.com");
 $Subject =("Nueva Solicitud de Cotizacion");
 $Message=("Solicitud de cotizacion");
