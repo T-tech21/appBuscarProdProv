@@ -21,6 +21,7 @@
     /*Si no esta el producto disponible dar seguimiento especifico a cliente, confirmacion de seguimiento a faltantes*/              
                   <li>Producto no encontrado o sin diponibilidad</li>
                 <input type="button" value="Confirmacion de Pedido" size="20">
+                  
         //*EN CASO DE QUE EL CLIENTE DESEE LAS PIEZAS QUE NO ENCONTRO O NO ESTAN DISPONIBLES, CONFIRMAR LA SOLICITUD
                   
                   <li>Solicitud de piezas que no se encontraron en pedido</li>
@@ -83,14 +84,12 @@ $Email=($To,$Subject,$Message);
 <div> 
     "Solicitud de cotizacion "
 </div>
-      
-    //*Anexar tabla de cotizacion, asignar descuentos en automatico de acuerdo a tpo de cliente (asignar en automatico tipo cliente para descuento) y hacer la sumatoria
+          //*Anexar tabla de cotizacion, asignar descuentos en automatico de acuerdo a tpo de cliente (asignar en automatico tipo cliente para descuento) y hacer la sumatoria
     
 if(isset($_SELECT["Cliente"])){                  
 $sqln=mysqli_query($conn, "SELECT IdCliente,Nombre(s),Apellidos,Direccion,Telefono,TipoCliente,Descuento,CodigoDesc FROM Cliente); 
     
-    
-if(isset($_INSERT["cotizacionPedido"])){                  
+    if(isset($_INSERT["cotizacionPedido"])){                  
 $sqln=mysqli_query($conn, "INSERT IdCliente,Sku,CodigoAlterno,Descripcion,PrecioCosto,Descuento,PrecioFinal FROM cotizacion); 
   
 $result=mysqli_query($sqln,$pbu) or die(mysqli_error());

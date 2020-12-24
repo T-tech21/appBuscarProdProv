@@ -68,7 +68,7 @@ $sqln=mysqli_query($conn, "SELECT CodigoAlterno,Sku,Descripcion,Precio,Existenci
     </tr>
   </thead>
 <?php
-if(isset($_GET["buscar"])){ 
+if(isset($_SELECT["buscar"])){ 
 $n=0;
 while ($dato=mysqli_fetch_array($sqln))
 {	$n++;
@@ -113,8 +113,10 @@ $pbu=$_UPDATE["Producto"];
   </div>
 </form>
   </li>
-</ul>
-$result=mysqli_query($sqln,$pbu=$_UPDATE) or die(mysqli_error());
+          if(isset($_UPDATE["Producto"])){                  
+$sqln=mysqli_query($conn, "UPDATE CodigoAlterno,Sku,Descripcion,Precio,Existencias,Marca,PorSurtir,Proveedor,Almacen,TotalPiezas,Categoria,ClaveProdServ,ClaveUnidad,Compatibilidad,FechaActualizacion,Imagen,Detalles FROM Producto); /* WHERE catalogolars.sku LIKE '%$sku%' ");*/
+    
+    $result=mysqli_query($sqln,$pbu=$_UPDATE) or die(mysqli_error());
 }
 ?>
 <table class="Producto">
