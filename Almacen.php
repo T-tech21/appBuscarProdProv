@@ -211,6 +211,32 @@ $pbu=$_UPDATE["Pedido"];
 
         //*conexion a correo electronico para anexar informacion de pedido Faltante y se pueda surtir en cuanto este disponible el Producto
         <a><submit="@lars.com.mx" >
+          
+              
+$To =("astrid_24@live.com.mx,astrid319425@gmail.com");
+$Subject =("Notificacion de Pedido Faltante");
+$Message=("Pedido Faltante para surtir a la brevedad");
+$Email=($To,$Subject,$Message);
+    
+<Html>
+    <Header>"Notificacion de Pedido Faltante"</Header>
+<div> 
+    "Pedido Faltante para surtir a la brevedad"
+</div>
+      
+          
+                    
+$To =("astrid_24@live.com.mx,astrid319425@gmail.com");
+$Subject =("Notificacion de Producto Eliminado");
+$Message=("Producto_sku_eliminado");
+$Email=($To,$Subject,$Message);
+    
+<Html>
+    <Header>"Notificacion de Producto eliminado"</Header>
+<div> 
+    "Producto Eliminado de Catalogo"
+</div>
+
       <li><a href="Entregado">Entregado</a></li>
       </SELECT>
   <input name="Actualizar" type="hidden" class="form-control mb-2" id="inlineFormInput"value="v">
@@ -265,8 +291,6 @@ $Email=($To,$Subject,$Message);
 <div> 
     "Producto Negado o Faltante"
 </div>
-        
-        
         
          </div>  
     </body>
