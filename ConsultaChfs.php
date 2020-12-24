@@ -92,7 +92,8 @@ $result=mysqli_query($sqln,$sku) or die(mysqli_error());
 }
 ?>
 
-//*VERIFICAR SI ES CONVENIENTE QUE LA CONSULTA INCLUYA DATOS DEL CHOFER E INLCUIRLOS EN LA TABLA 
+/*VERIFICAR SI ES CONVENIENTE QUE LA CONSULTA INCLUYA DATOS DEL CHOFER E INLCUIRLOS EN LA TABLA */
+
  <?php
 include('conexion.php');
 $conn = new mysqli($localhost, $usuario, $password, $Control);

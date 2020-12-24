@@ -63,6 +63,8 @@ $result=mysqli_query($sqln,$pbu) or die(mysqli_error());
 ?>
 /*agregar notificacion a correo electronico de actualizacion */
 
+    
+    
 <table class="newproducto">
   <thead>
     <tr>

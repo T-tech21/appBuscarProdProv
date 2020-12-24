@@ -39,9 +39,12 @@ $pbu=$_Pedido["sku"];
       <input name="IdCliente" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese IdCliente">  
         <input name="Folio" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Folio">  
         <input name="Pedido" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Pedido">  <input name="FechaPedido" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Seleccione fecha pedido">
+          //*Verificar si la ruta y chofer se asignan aleatoriamente o son fijas y por cuanto
+          //*Asignar Area o persona del area de cotejo surtido o verificacion asignacion de ruta y chofer
+          
           //*calendario
           
-          //*Asignar total de pedido
+          //*Asignar total de pedido y enviar notificacion a almacen y administracion de pedido nuevo
           
         </div>
       <div class="col-auto">
@@ -58,6 +61,9 @@ $result=mysqli_query($sqln,$pbu) or die(mysqli_error());
 }
 ?>
 /*agregar notificacion a correo electronico de actualizacion */
+
+
+//*verificar si se incluye datos del area de venta o se registra en automatico al loggearse
 
 <table class="Pedido">
   <thead>

@@ -253,6 +253,21 @@ $result=mysqli_query($sqln,$pbu=$_UPDATE) or die(mysqli_error());
         <input name="Detalles" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Detalles">
 //*Enviar mensaje por correo para dar seguimiento al pedido negado o faltante
         
+        
+          
+$To =("astrid_24@live.com.mx,astrid319425@gmail.com");
+$Subject =("Producto Negado o Faltante");
+$Message=("Seguimiento a Producto Negado o Faltante ");
+$Email=($To,$Subject,$Message);
+    
+<Html>
+    <Header>"Notificacion de Producto Negado o Faltante"</Header>
+<div> 
+    "Producto Negado o Faltante"
+</div>
+        
+        
+        
          </div>  
     </body>
 
