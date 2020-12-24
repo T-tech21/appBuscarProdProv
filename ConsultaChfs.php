@@ -86,11 +86,13 @@ if(isset($_INSERT["IngProdAdVendidos"])){
 $pbu=$_IngProdAdVendidosT["sku"];	
 	}
   
-if(isset($_INSERT["VentasPorDia"])){                  
+if(isset($_INSERT["IngProdAdVendidos"])){                  
 $sqln=mysqli_query($conn, "INSERT Sku,Nombre,Tamaño,Descripcion,Marca,Proveedor,Categoria,ClaveProdServ,ClaveUnidad,Cantidad,Total,AreaVenta FROM VentasPorDia);   
 $result=mysqli_query($sqln,$sku) or die(mysqli_error());
 }
 ?>
+
+//*VERIFICAR SI ES CONVENIENTE QUE LA CONSULTA INCLUYA DATOS DEL CHOFER E INLCUIRLOS EN LA TABLA 
  <?php
 include('conexion.php');
 $conn = new mysqli($localhost, $usuario, $password, $Control);
@@ -103,6 +105,10 @@ $pbu=$_IngProdAdVendidosT["sku"];
     
 if(isset($_INSERT["IngresodePedido"])){                  
 $sqln=mysqli_query($conn, "INSERT IdCliente,Folio,Total,FechaPedido,Pedido FROM Pedido); 
+$result=mysqli_query($sqln,$sku) or die(mysqli_error());
+}
+if(isset($_INSERT["IngresodePedido"])){                  
+$sqln=mysqli_query($conn, "INSERT IdCliente,Pedido,Total FROM Pedido);   
 $result=mysqli_query($sqln,$sku) or die(mysqli_error());
 }
 ?>
