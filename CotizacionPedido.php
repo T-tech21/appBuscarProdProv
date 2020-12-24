@@ -7,7 +7,7 @@
         <title>CotizacionPedido</title>
     </head>
         
-        /* Asignar Id Cliente y Folio en automatico para pedidos(verificar tentativamente fecha aprox de entregas en status en automatico asignar (sin enviar, sin revisar, recibida, confirmacion de pedido))*/
+        /* Asignar Id Cliente y Folio en automatico para pedidos(verificar tentativamente fecha aprox de entregas en status en automatico asignar (sin enviar, sin revisar, recibida, confirmacion de pedido, pedido incompleto anexar nota para cliente y confirmar si desea que se le de seguimiento cuando este disponible))*/
         
           <form>  
               <input/>
@@ -40,7 +40,6 @@ $pbu=$_UPDATE["sku"];
 	}
 
 
-
 $To =("astrid_24@live.com.mx,astrid319425@gmail.com");
 $Subject =("Nueva Solicitud de Cotizacion");
 $Message=("Solicitud de cotizacion");
@@ -53,7 +52,7 @@ $Email=($To,$Subject,$Message);
 </div>
       
     //*Anexar tabla de cotizacion, asignar descuentos en automatico de acuerdo a tpo de cliente y hacer la sumatoria
-if(isset($_INSERT["cotizacion"])){                  
+if(isset($_INSERT["cotizacionPedido"])){                  
 $sqln=mysqli_query($conn, "INSERT IdCliente,Sku,CodigoAlterno,Descripcion,PrecioCosto,Descuento,PrecioFinal FROM cotizacion); 
   
 $result=mysqli_query($sqln,$pbu) or die(mysqli_error());
