@@ -18,13 +18,28 @@
                   <li>Pedido</li>
                   <li></li>
                   <li>FechaPedido</li>
-    //*Si no esta producto disponible dar seguimiento especifico a cliente, confirmacion de seguimiento a faltantes              
+    /*Si no esta el producto disponible dar seguimiento especifico a cliente, confirmacion de seguimiento a faltantes*/              
                   <li>Producto no encontrado o sin diponibilidad</li>
                 <input type="button" value="Confirmacion de Pedido" size="20">
-              <input type="button" value="Producto no encontrado o sin existencias" size="20">
+        //*EN CASO DE QUE EL CLIENTE DESEE LAS PIEZAS QUE NO ENCONTRO O NO ESTAN DISPONIBLES, CONFIRMAR LA SOLICITUD
+                  
+                  <li>Solicitud de piezas que no se encontraron en pedido</li>
+              <input type="button" value="Confirmar Solicitud" size="20">
                   <li>estatus</li>
                   </ul>
                   
+                  <?php
+    $To =("astrid_24@live.com.mx,astrid319425@gmail.com");
+$Subject =("2a Compra de productos no encontrados");
+$Message=("Solicitud de Productos no encontrados");
+$Email=($To,$Subject,$Message);
+    
+<Html>
+    <Header>"Solicitud de Pedido Complemento"</Header>
+<div> 
+    "Solicitud de pedido Complemento a pedido "
+</div              
+    ?>
                   <form action = "conexion.php "  method = "POST"  >
        <h2 label for="CotizacionPedido">Buscar Producto:</label><select name="CotizacionPedido">
             <option selected value="0">Elige una opción</option>
@@ -36,8 +51,7 @@
                     <option value="4">Para Confirmacion Pedido</option>
                     <option value="5">Pedido Incompleto</option>
                     <option value="6">Seguimiento a Faltantes</option>
-                    
-                </optgroup>
+                    </optgroup>
         </select>
     
                   </nav>
