@@ -27,7 +27,17 @@
 </html>
 
 
-/* Anexar correo para recepcion de solicitud de cotizaciones
+/* Anexar correo para recepcion de solicitud de cotizaciones */
+
+<?php
+include('conexion.php');
+$conn = new mysqli($localhost, $usuario, $password, $ProductosProvNI);
+if ($conn->connect_error) {
+    die("la conexión ha fallado: " . $conn->connect_error);
+}
+if(isset($_UPDATE["catalogolars"])){
+$pbu=$_UPDATE["sku"];	
+	}
 
 
 
@@ -42,3 +52,11 @@ $Email=($To,$Subject,$Message);
     "Solicitud de cotizacion "
 </div>
       
+    //*Anexar tabla de cotizacion, asignar descuentos en automatico de acuerdo a tpo de cliente y hacer la sumatoria
+if(isset($_INSERT["cotizacion"])){                  
+$sqln=mysqli_query($conn, "INSERT IdCliente,Sku,CodigoAlterno,Descripcion,PrecioCosto,Descuento,PrecioFinal FROM cotizacion); 
+  
+$result=mysqli_query($sqln,$pbu) or die(mysqli_error());
+}
+?>
+    
