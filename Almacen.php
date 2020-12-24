@@ -209,7 +209,7 @@ $pbu=$_UPDATE["Pedido"];
       <li><a href= "Incompleto">Incompleto</a><li>
         <input name="Mercancia Faltante" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Piezas Faltantes">  
 
-        //*conexion a correo electronico para anexar informacion de pedido Faltante y se pueda surtir en cuanto este disponible el Producto
+        //*conexion a correo electronico para anexar informacion de pedido Faltante y se pueda surtir en cuanto este disponible el Producto CORREO A ADMINISTRACION
         <a><submit="@lars.com.mx" >
           
               
@@ -267,7 +267,7 @@ $result=mysqli_query($sqln,$pbu=$_UPDATE) or die(mysqli_error());
         <input name="Motivo" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Motivos">
         <input name="FolioPedido" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="FolioPedido">
         <input name="Detalles" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Detalles">
-//*Enviar mensaje por correo para dar seguimiento al pedido negado o faltante
+//*Enviar mensaje por correo para dar seguimiento al pedido negado o faltante, ADMINISTRACION  PARA SEGUIMIENTO
         
         
           

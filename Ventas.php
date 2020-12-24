@@ -77,7 +77,7 @@ $sqln=mysqli_query($conn, "INSERT Sku,Nombre,Tamaño,Descripcion,Marca,Proveedor
 $result=mysqli_query($sqln,$sku) or die(mysqli_error());
 }
 ?>
-     //*Envio por correo de ventas por dia, copias 
+     //*Envio por correo de ventas por dia, copias AREA DE ADMINISTRACION Y POSIBLEMENTE JEFE
           
 $To =("astrid_24@live.com.mx,astrid319425@gmail.com");
 $Subject =("Notificacion de Ventas Por Dia");
