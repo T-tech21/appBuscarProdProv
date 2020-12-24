@@ -225,17 +225,7 @@ $Email=($To,$Subject,$Message);
 </div>
       
           
-                    
-$To =("astrid_24@live.com.mx,astrid319425@gmail.com");
-$Subject =("Notificacion de Producto Eliminado");
-$Message=("Producto_sku_eliminado");
-$Email=($To,$Subject,$Message);
-    
-<Html>
-    <Header>"Notificacion de Producto eliminado"</Header>
-<div> 
-    "Producto Eliminado de Catalogo"
-</div>
+   
 
       <li><a href="Entregado">Entregado</a></li>
       </SELECT>

@@ -62,6 +62,18 @@ $result=mysqli_query($sqln,$pbu) or die(mysqli_error());
 }
 ?>
 /*agregar notificacion a correo electronico de actualizacion */
+          
+
+    $To =("astrid_24@live.com.mx,astrid319425@gmail.com");
+$Subject =("Notificacion de Producto Nuevo");
+$Message=("Producto_Nuevo");
+$Email=($To,$Subject,$Message);
+    
+<Html>
+    <Header>"Notificacion de Producto Nuevo"</Header>
+<div> 
+    "Producto Nuevo"
+</div>
 
     
     

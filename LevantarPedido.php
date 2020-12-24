@@ -62,6 +62,17 @@ $result=mysqli_query($sqln,$pbu) or die(mysqli_error());
 ?>
 /*agregar notificacion a correo electronico de actualizacion */
 
+          
+$To =("astrid_24@live.com.mx,astrid319425@gmail.com");
+$Subject =("Notificacion de Pedido Nuevo");
+$Message=("Pedido Nuevo");
+$Email=($To,$Subject,$Message);
+    
+<Html>
+    <Header>"Notificacion de Pedido Nuevo"</Header>
+<div> 
+    "Pedido Nuevo"
+</div>
 
 //*verificar si se incluye datos del area de venta o se registra en automatico al loggearse
 
