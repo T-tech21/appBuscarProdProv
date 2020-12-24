@@ -60,9 +60,8 @@ $sqln=mysqli_query($conn, "INSERT IdCliente,Folio,Pedido,FechaPedido FROM Pedido
 $result=mysqli_query($sqln,$pbu) or die(mysqli_error());
 }
 ?>
-/*agregar notificacion a correo electronico de actualizacion */
+/*agregar notificacion a correo electronico de actualizacion ANEXAR CORREOS ELECTRONICOS DE AREA DE ALMACEN Y ADMINISTRACION
 
-          
 $To =("astrid_24@live.com.mx,astrid319425@gmail.com");
 $Subject =("Notificacion de Pedido Nuevo");
 $Message=("Pedido Nuevo");

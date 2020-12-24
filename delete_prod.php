@@ -18,7 +18,7 @@ $pbu=$_DELETE["Sku"];
       <input name="Sku" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese Sku">  
       <input name="Motivos" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Motivo de Eliminacion"> 
 
-      //*Enviar por correo electronico el sku que se ha dado de baja
+      //*Enviar por correo electronico el sku que se ha dado de baja 
           
 $To =("astrid_24@live.com.mx,astrid319425@gmail.com");
 $Subject =("Notificacion de Producto Eliminado");
@@ -28,10 +28,9 @@ $Email=($To,$Subject,$Message);
 <Html>
     <Header>"Notificacion de Producto eliminado"</Header>
 <div> 
-    "Producto Eliminado de Catalogo"
+    "Producto Eliminado de Catalogo MOTIVO"
 </div>
 
-    
 if(isset($_DELETE["catalogolars"])){                  
 $sqln=mysqli_query($conn,"DELETE Sku,Nombre,Tamaño,PrecioCosto,PrecioLocal,PrecioForaneo,PrecioBarra FROM catalogolars"));
 }

@@ -113,3 +113,16 @@ $sqln=mysqli_query($conn, "INSERT IdCliente,Pedido,Total FROM Pedido);
 $result=mysqli_query($sqln,$sku) or die(mysqli_error());
 }
 ?>
+
+  //*INGRESO DE CORREOS ELECTRONICOS PARA AREA DE ALMACEN Y ADMINISTRACION        
+  
+$To =("astrid_24@live.com.mx,astrid319425@gmail.com");
+$Subject =("Notificacion de Pedido Nuevo");
+$Message=("Pedido Nuevo");
+$Email=($To,$Subject,$Message);
+    
+<Html>
+    <Header>"Notificacion de Pedido Nuevo"</Header>
+<div> 
+    "Producto Nuevo"
+</div>

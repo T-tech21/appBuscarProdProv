@@ -61,7 +61,8 @@ $sqln=mysqli_query($conn, "INSERT CodigoAlterno,Sku,Descripcion,PrecioCosto,Prec
 $result=mysqli_query($sqln,$pbu) or die(mysqli_error());
 }
 ?>
-/*agregar notificacion a correo electronico de actualizacion */
+
+    /*agregar notificacion a correo electronico de actualizacion */
           
 
 $To =("astrid_24@live.com.mx,astrid319425@gmail.com");
