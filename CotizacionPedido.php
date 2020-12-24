@@ -20,6 +20,22 @@
                   <li>FechaPedido</li>
                   <li>estatus</li>
               </ul>
+                  
+                  <form action = "conexion.php "  method = "POST"  >
+       <h2 label for="CotizacionPedido">Buscar Producto:</label><select name="CotizacionPedido">
+            <option selected value="0">Elige una opción</option>
+            
+                <optgroup label="">
+                    <option value="1">Sin enviar</option>
+                    <option value="2">Sin revisar</option>
+                    <option value="3">Solicitud Revisada</option>
+                    <option value="4">Para Confirmacion Pedido</option>
+                    <option value="5">Pedido Incompleto</option>
+                    <option value="6">Seguimiento a Faltantes</option>
+                    
+                </optgroup>
+        </select>
+    
                   </nav>
               <input type="button" value="Comprar" size="20">
               <input type="button" value="Cancelar" size="20">
