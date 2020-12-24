@@ -66,7 +66,7 @@ $Email=($To,$Subject,$Message);
     "Solicitud de cotizacion "
 </div>
       
-    //*Anexar tabla de cotizacion, asignar descuentos en automatico de acuerdo a tpo de cliente y hacer la sumatoria
+    //*Anexar tabla de cotizacion, asignar descuentos en automatico de acuerdo a tpo de cliente (asignar en automatico tipo cliente para descuento) y hacer la sumatoria
 if(isset($_INSERT["cotizacionPedido"])){                  
 $sqln=mysqli_query($conn, "INSERT IdCliente,Sku,CodigoAlterno,Descripcion,PrecioCosto,Descuento,PrecioFinal FROM cotizacion); 
   

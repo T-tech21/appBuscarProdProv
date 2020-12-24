@@ -223,7 +223,7 @@ $Email=($To,$Subject,$Message);
 <div> 
     "Pedido Faltante para surtir a la brevedad"
 </div>
-      
+     
           <li><a href="Entregado">Entregado</a></li>
       </SELECT>
   <input name="Actualizar" type="hidden" class="form-control mb-2" id="inlineFormInput"value="v">
