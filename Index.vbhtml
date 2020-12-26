@@ -15,3 +15,8 @@
 </form>
 	</li>
 	</ul>
+<?php
+$sql_registe = mysqli_query($conection,_"SELECT COUNT(*)as total_registro FROM catalogolars WHERE estatus=1");
+$result_register = mysqli_fetch_array($sql_registe);
+$total_registro =$result_register['total_registro']
+$por pagina = 10;
