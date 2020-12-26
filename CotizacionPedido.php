@@ -84,7 +84,7 @@ $Email=($To,$Subject,$Message);
 <div> 
     "Solicitud de cotizacion "
 </div>
-          //*Anexar tabla de cotizacion, asignar descuentos en automatico de acuerdo a tpo de cliente (asignar en automatico tipo cliente para descuento) y hacer la sumatoria
+          //*Anexar tabla de cotizacion, asignar descuentos en automatico de acuerdo a tipo de cliente (asignar en automatico tipo cliente para descuento) y hacer la sumatoria
     
 if(isset($_SELECT["Cliente"])){                  
 $sqln=mysqli_query($conn, "SELECT IdCliente,Nombre(s),Apellidos,Direccion,Telefono,TipoCliente,Descuento,CodigoDesc FROM Cliente); 

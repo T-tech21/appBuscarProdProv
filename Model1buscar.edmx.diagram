@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f0dd7ca49a454a97a1156156030cf026" Name="Diagram1">
+        <EntityTypeShape EntityType="masterModel.MSreplication_options" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="masterModel.spt_fallback_db" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="masterModel.spt_fallback_dev" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="masterModel.spt_fallback_usg" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="masterModel.spt_monitor" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="masterModel.spt_values" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="masterModel.Almacen" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="masterModel.carrusel" Width="1.5" PointX="7.75" PointY="4.75" />
+        <EntityTypeShape EntityType="masterModel.catalogolars" Width="1.5" PointX="5.75" PointY="7.75" />
+        <EntityTypeShape EntityType="masterModel.Cliente" Width="1.5" PointX="7.75" PointY="7.75" />
+        <EntityTypeShape EntityType="masterModel.Inventario" Width="1.5" PointX="0.75" PointY="8.75" />
+        <EntityTypeShape EntityType="masterModel.NewProducto" Width="1.5" PointX="2.75" PointY="8.75" />
+        <EntityTypeShape EntityType="masterModel.Pedido" Width="1.5" PointX="9.75" PointY="0.75" />
+        <EntityTypeShape EntityType="masterModel.ProveedorWinmex" Width="1.5" PointX="9.75" PointY="5.75" />
+        <EntityTypeShape EntityType="masterModel.PrecioCliente" Width="1.5" PointX="11.75" PointY="0.75" />
+        <EntityTypeShape EntityType="masterModel.Producto" Width="1.5" PointX="11.75" PointY="4.75" />
+        <EntityTypeShape EntityType="masterModel.ProductoNegado" Width="1.5" PointX="4.75" PointY="11.75" />
+        <EntityTypeShape EntityType="masterModel.Ventas" Width="1.5" PointX="6.75" PointY="11.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

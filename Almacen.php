@@ -211,7 +211,7 @@ $pbu=$_UPDATE["Pedido"];
       <li><a href= "Incompleto">Incompleto</a><li>
         <input name="Mercancia Faltante" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Piezas Faltantes">  
 
-        //*conexion a correo electronico para anexar informacion de pedido Faltante y se pueda surtir en cuanto este disponible el Producto CORREO A ADMINISTRACION
+        //*conexion a correo electronico para anexar informacion de pedido Faltante y se pueda surtir en cuanto este disponible el Producto CORREO A ADMINISTRACION COPIA A ALMACEN
         <a><submit="@lars.com.mx" >
           
               
@@ -268,7 +268,7 @@ $result=mysqli_query($sqln,$pbu=$_UPDATE) or die(mysqli_error());
 //*Enviar mensaje por correo para dar seguimiento al pedido negado o faltante, ADMINISTRACION  PARA SEGUIMIENTO
         
         
-          
+<?php       
 $To =("astrid_24@live.com.mx,astrid319425@gmail.com");
 $Subject =("Producto Negado o Faltante");
 $Message=("Seguimiento a Producto Negado o Faltante ");
@@ -279,10 +279,8 @@ $Email=($To,$Subject,$Message);
 <div> 
     "Producto Negado o Faltante"
 </div>
-        
          </div>  
     </body>
-
     <?php
 include('conexion.php');
 $conn = new mysqli($localhost, $usuario, $password, $Control);

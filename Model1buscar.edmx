@@ -1,0 +1,1091 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="masterModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Almacen">
+          <Key>
+            <PropertyRef Name="Sku" />
+          </Key>
+          <Property Name="Sku" Type="int" Nullable="false" />
+          <Property Name="Pieza" Type="varchar" MaxLength="50" />
+          <Property Name="Existencias" Type="int" />
+          <Property Name="Faltantes" Type="int" />
+          <Property Name="NombreAlmacen" Type="varchar(max)" />
+          <Property Name="PedidoSurtido" Type="text" />
+          <Property Name="PedidoCotejado" Type="text" />
+          <Property Name="PedidoEnviado" Type="text" />
+          <Property Name="FechaEnvio" Type="date" />
+          <Property Name="FechaSurtido" Type="date" />
+        </EntityType>
+        <EntityType Name="carrusel">
+          <Key>
+            <PropertyRef Name="Sku" />
+          </Key>
+          <Property Name="Sku" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Imagen" Type="varchar(max)" />
+          <Property Name="Descripcion" Type="varchar(max)" />
+          <Property Name="Ubicacion" Type="varchar(max)" />
+          <Property Name="Precio" Type="float" />
+        </EntityType>
+        <EntityType Name="catalogolars">
+          <Key>
+            <PropertyRef Name="Sku" />
+          </Key>
+          <Property Name="Sku" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+          <Property Name="Tamaño" Type="varchar(max)" />
+          <Property Name="PrecioCosto" Type="varchar(max)" />
+          <Property Name="PrecioLocal" Type="float" />
+          <Property Name="PrecioForaneo" Type="float" />
+          <Property Name="PrecioBarra" Type="float" />
+        </EntityType>
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="IdCliente" />
+          </Key>
+          <Property Name="IdCliente" Type="int" Nullable="false" />
+          <Property Name="Nombre(s)" Type="varchar(max)" />
+          <Property Name="Apellidos" Type="varchar(max)" />
+          <Property Name="Direccion" Type="varchar(max)" />
+          <Property Name="Telefono" Type="varchar" MaxLength="50" />
+          <Property Name="TipoCliente" Type="varchar(max)" />
+          <Property Name="Descuento" Type="float" />
+          <Property Name="CodigoDesc" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Inventario">
+          <Key>
+            <PropertyRef Name="Sku" />
+          </Key>
+          <Property Name="Sku" Type="int" Nullable="false" />
+          <Property Name="CodigoAlterno" Type="nchar" MaxLength="10" />
+          <Property Name="Vendidos" Type="nchar" MaxLength="10" />
+          <Property Name="PorSurtir" Type="nchar" MaxLength="10" />
+          <Property Name="TotalPiezas" Type="int" />
+          <Property Name="Almacen" Type="int" />
+          <Property Name="FechaUltimaActualizacion" Type="date" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'master.dbo.MSreplication_options' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="MSreplication_options">
+          <Key>
+            <PropertyRef Name="optname" />
+            <PropertyRef Name="value" />
+            <PropertyRef Name="major_version" />
+            <PropertyRef Name="minor_version" />
+            <PropertyRef Name="revision" />
+            <PropertyRef Name="install_failures" />
+          </Key>
+          <Property Name="optname" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="value" Type="bit" Nullable="false" />
+          <Property Name="major_version" Type="int" Nullable="false" />
+          <Property Name="minor_version" Type="int" Nullable="false" />
+          <Property Name="revision" Type="int" Nullable="false" />
+          <Property Name="install_failures" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NewProducto">
+          <Key>
+            <PropertyRef Name="Sku" />
+          </Key>
+          <Property Name="Sku" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nombre" Type="varchar(max)" />
+          <Property Name="Tamaño" Type="varchar" MaxLength="50" />
+          <Property Name="PrecioCosto" Type="float" />
+          <Property Name="PrecioLocal" Type="float" />
+          <Property Name="PrecioForaneo" Type="float" />
+          <Property Name="PrecioBarra" Type="float" />
+        </EntityType>
+        <EntityType Name="Pedido">
+          <Key>
+            <PropertyRef Name="IdCliente" />
+          </Key>
+          <Property Name="IdCliente" Type="int" Nullable="false" />
+          <Property Name="Folio" Type="int" />
+          <Property Name="AreaCotejo" Type="varchar(max)" />
+          <Property Name="PersonaSurtido" Type="varchar(max)" />
+          <Property Name="StatusPedido" Type="nchar" MaxLength="10" />
+          <Property Name="VerificacionPedido" Type="varchar" MaxLength="10" />
+          <Property Name="RutaAsignada" Type="varchar" MaxLength="10" />
+          <Property Name="ChoferAsignado" Type="varchar" MaxLength="10" />
+          <Property Name="Total" Type="money" />
+          <Property Name="FechaPedido" Type="date" />
+          <Property Name="Pedido" Type="varchar(max)" />
+          <Property Name="PersonaAutoriza" Type="varchar(max)" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'master.dbo.PrecioCliente' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="PrecioCliente">
+          <Key>
+            <PropertyRef Name="Sku" />
+          </Key>
+          <Property Name="Sku" Type="varchar(max)" Nullable="false" />
+          <Property Name="PrecioCosto" Type="float" />
+          <Property Name="Precio1" Type="float" />
+          <Property Name="Precio2" Type="float" />
+          <Property Name="Precio3" Type="float" />
+          <Property Name="Precio4" Type="float" />
+          <Property Name="Iva" Type="float" />
+          <Property Name="Ieps" Type="float" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'master.dbo.Producto' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="Producto">
+          <Key>
+            <PropertyRef Name="Sku" />
+          </Key>
+          <Property Name="CodigoAlterno" Type="char" MaxLength="10" />
+          <Property Name="Sku" Type="varchar(max)" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar(max)" />
+          <Property Name="Precio" Type="float" />
+          <Property Name="Existencias" Type="int" />
+          <Property Name="Marca" Type="varchar(max)" />
+          <Property Name="Vendidos" Type="int" />
+          <Property Name="PorSurtir" Type="int" />
+          <Property Name="Proveedor" Type="text" />
+          <Property Name="Almacen" Type="text" />
+          <Property Name="TotalPiezas" Type="int" />
+          <Property Name="Categoria" Type="text" />
+          <Property Name="ClaveProdServ" Type="text" />
+          <Property Name="ClaveUnidad" Type="nchar" MaxLength="10" />
+          <Property Name="Compatibilidad" Type="varchar(max)" />
+          <Property Name="FechaActualizacion" Type="date" />
+          <Property Name="Imagen" Type="varchar(max)" />
+          <Property Name="Detalles" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'master.dbo.ProductoNegado' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="ProductoNegado">
+          <Key>
+            <PropertyRef Name="Sku" />
+          </Key>
+          <Property Name="Sku" Type="varchar(max)" Nullable="false" />
+          <Property Name="NombreCliente" Type="varchar(max)" />
+          <Property Name="CantidadNegada" Type="int" />
+          <Property Name="FechaNegacion" Type="date" />
+          <Property Name="Motivo" Type="varchar(max)" />
+          <Property Name="FolioPedido" Type="int" />
+          <Property Name="Detalles" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="ProveedorWinmex">
+          <Key>
+            <PropertyRef Name="Sku" />
+          </Key>
+          <Property Name="Sku" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CodigoAlterno" Type="varchar(max)" />
+          <Property Name="Descripcion" Type="varchar(max)" />
+          <Property Name="PrecioCosto" Type="float" />
+          <Property Name="Precio1" Type="float" />
+          <Property Name="Precio2" Type="float" />
+          <Property Name="Precio3" Type="float" />
+          <Property Name="Precio4" Type="float" />
+          <Property Name="Iva" Type="float" />
+          <Property Name="ieps" Type="float" />
+          <Property Name="Tipo" Type="varchar(max)" />
+          <Property Name="Categoria" Type="varchar(max)" />
+          <Property Name="Marca" Type="varchar(max)" />
+          <Property Name="Proveedor" Type="varchar(max)" />
+          <Property Name="Existencia" Type="varchar(max)" />
+          <Property Name="Almacen" Type="varchar(max)" />
+          <Property Name="ClaveProdServ" Type="varchar(max)" />
+          <Property Name="ClaveUnidad" Type="varchar(max)" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'master.dbo.spt_fallback_db' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="spt_fallback_db">
+          <Key>
+            <PropertyRef Name="xserver_name" />
+            <PropertyRef Name="xdttm_ins" />
+            <PropertyRef Name="xdttm_last_ins_upd" />
+            <PropertyRef Name="name" />
+            <PropertyRef Name="dbid" />
+            <PropertyRef Name="status" />
+            <PropertyRef Name="version" />
+          </Key>
+          <Property Name="xserver_name" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="xdttm_ins" Type="datetime" Nullable="false" />
+          <Property Name="xdttm_last_ins_upd" Type="datetime" Nullable="false" />
+          <Property Name="xfallback_dbid" Type="smallint" />
+          <Property Name="name" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="dbid" Type="smallint" Nullable="false" />
+          <Property Name="status" Type="smallint" Nullable="false" />
+          <Property Name="version" Type="smallint" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'master.dbo.spt_fallback_dev' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="spt_fallback_dev">
+          <Key>
+            <PropertyRef Name="xserver_name" />
+            <PropertyRef Name="xdttm_ins" />
+            <PropertyRef Name="xdttm_last_ins_upd" />
+            <PropertyRef Name="low" />
+            <PropertyRef Name="high" />
+            <PropertyRef Name="status" />
+            <PropertyRef Name="name" />
+            <PropertyRef Name="phyname" />
+          </Key>
+          <Property Name="xserver_name" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="xdttm_ins" Type="datetime" Nullable="false" />
+          <Property Name="xdttm_last_ins_upd" Type="datetime" Nullable="false" />
+          <Property Name="xfallback_low" Type="int" />
+          <Property Name="xfallback_drive" Type="char" MaxLength="2" />
+          <Property Name="low" Type="int" Nullable="false" />
+          <Property Name="high" Type="int" Nullable="false" />
+          <Property Name="status" Type="smallint" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="phyname" Type="varchar" MaxLength="127" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'master.dbo.spt_fallback_usg' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="spt_fallback_usg">
+          <Key>
+            <PropertyRef Name="xserver_name" />
+            <PropertyRef Name="xdttm_ins" />
+            <PropertyRef Name="xdttm_last_ins_upd" />
+            <PropertyRef Name="dbid" />
+            <PropertyRef Name="segmap" />
+            <PropertyRef Name="lstart" />
+            <PropertyRef Name="sizepg" />
+            <PropertyRef Name="vstart" />
+          </Key>
+          <Property Name="xserver_name" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="xdttm_ins" Type="datetime" Nullable="false" />
+          <Property Name="xdttm_last_ins_upd" Type="datetime" Nullable="false" />
+          <Property Name="xfallback_vstart" Type="int" />
+          <Property Name="dbid" Type="smallint" Nullable="false" />
+          <Property Name="segmap" Type="int" Nullable="false" />
+          <Property Name="lstart" Type="int" Nullable="false" />
+          <Property Name="sizepg" Type="int" Nullable="false" />
+          <Property Name="vstart" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'master.dbo.spt_monitor' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="spt_monitor">
+          <Key>
+            <PropertyRef Name="lastrun" />
+            <PropertyRef Name="cpu_busy" />
+            <PropertyRef Name="io_busy" />
+            <PropertyRef Name="idle" />
+            <PropertyRef Name="pack_received" />
+            <PropertyRef Name="pack_sent" />
+            <PropertyRef Name="connections" />
+            <PropertyRef Name="pack_errors" />
+            <PropertyRef Name="total_read" />
+            <PropertyRef Name="total_write" />
+            <PropertyRef Name="total_errors" />
+          </Key>
+          <Property Name="lastrun" Type="datetime" Nullable="false" />
+          <Property Name="cpu_busy" Type="int" Nullable="false" />
+          <Property Name="io_busy" Type="int" Nullable="false" />
+          <Property Name="idle" Type="int" Nullable="false" />
+          <Property Name="pack_received" Type="int" Nullable="false" />
+          <Property Name="pack_sent" Type="int" Nullable="false" />
+          <Property Name="connections" Type="int" Nullable="false" />
+          <Property Name="pack_errors" Type="int" Nullable="false" />
+          <Property Name="total_read" Type="int" Nullable="false" />
+          <Property Name="total_write" Type="int" Nullable="false" />
+          <Property Name="total_errors" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'master.dbo.Ventas' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="Ventas">
+          <Key>
+            <PropertyRef Name="IdCliente" />
+          </Key>
+          <Property Name="IdCliente" Type="varchar(max)" Nullable="false" />
+          <Property Name="Folio" Type="int" />
+          <Property Name="FormaPago" Type="text" />
+          <Property Name="TipoPago" Type="text" />
+          <Property Name="FechaCompra" Type="date" />
+          <Property Name="FechaSurtido" Type="date" />
+          <Property Name="Total" Type="float" />
+          <Property Name="Codigo" Type="varchar(max)" />
+          <Property Name="TipoVenta" Type="varchar(max)" />
+          <Property Name="Vendedor" Type="varchar(max)" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'master.dbo.spt_values' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="spt_values">
+          <Key>
+            <PropertyRef Name="number" />
+            <PropertyRef Name="type" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="35" />
+          <Property Name="number" Type="int" Nullable="false" />
+          <Property Name="type" Type="nchar" MaxLength="3" Nullable="false" />
+          <Property Name="low" Type="int" />
+          <Property Name="high" Type="int" />
+          <Property Name="status" Type="int" />
+        </EntityType>
+        <Function Name="sp_MScleanupmergepublisher" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_MSrepl_startup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="masterModelStoreContainer">
+          <EntitySet Name="Almacen" EntityType="Self.Almacen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="carrusel" EntityType="Self.carrusel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="catalogolars" EntityType="Self.catalogolars" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Inventario" EntityType="Self.Inventario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NewProducto" EntityType="Self.NewProducto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pedido" EntityType="Self.Pedido" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProveedorWinmex" EntityType="Self.ProveedorWinmex" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MSreplication_options" EntityType="Self.MSreplication_options" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [MSreplication_options].[optname] AS [optname], 
+    [MSreplication_options].[value] AS [value], 
+    [MSreplication_options].[major_version] AS [major_version], 
+    [MSreplication_options].[minor_version] AS [minor_version], 
+    [MSreplication_options].[revision] AS [revision], 
+    [MSreplication_options].[install_failures] AS [install_failures]
+    FROM [dbo].[MSreplication_options] AS [MSreplication_options]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="PrecioCliente" EntityType="Self.PrecioCliente" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [PrecioCliente].[Sku] AS [Sku], 
+    [PrecioCliente].[PrecioCosto] AS [PrecioCosto], 
+    [PrecioCliente].[Precio1] AS [Precio1], 
+    [PrecioCliente].[Precio2] AS [Precio2], 
+    [PrecioCliente].[Precio3] AS [Precio3], 
+    [PrecioCliente].[Precio4] AS [Precio4], 
+    [PrecioCliente].[Iva] AS [Iva], 
+    [PrecioCliente].[Ieps] AS [Ieps]
+    FROM [dbo].[PrecioCliente] AS [PrecioCliente]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Producto" EntityType="Self.Producto" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Producto].[CodigoAlterno] AS [CodigoAlterno], 
+    [Producto].[Sku] AS [Sku], 
+    [Producto].[Descripcion] AS [Descripcion], 
+    [Producto].[Precio] AS [Precio], 
+    [Producto].[Existencias] AS [Existencias], 
+    [Producto].[Marca] AS [Marca], 
+    [Producto].[Vendidos] AS [Vendidos], 
+    [Producto].[PorSurtir] AS [PorSurtir], 
+    [Producto].[Proveedor] AS [Proveedor], 
+    [Producto].[Almacen] AS [Almacen], 
+    [Producto].[TotalPiezas] AS [TotalPiezas], 
+    [Producto].[Categoria] AS [Categoria], 
+    [Producto].[ClaveProdServ] AS [ClaveProdServ], 
+    [Producto].[ClaveUnidad] AS [ClaveUnidad], 
+    [Producto].[Compatibilidad] AS [Compatibilidad], 
+    [Producto].[FechaActualizacion] AS [FechaActualizacion], 
+    [Producto].[Imagen] AS [Imagen], 
+    [Producto].[Detalles] AS [Detalles]
+    FROM [dbo].[Producto] AS [Producto]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ProductoNegado" EntityType="Self.ProductoNegado" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ProductoNegado].[Sku] AS [Sku], 
+    [ProductoNegado].[NombreCliente] AS [NombreCliente], 
+    [ProductoNegado].[CantidadNegada] AS [CantidadNegada], 
+    [ProductoNegado].[FechaNegacion] AS [FechaNegacion], 
+    [ProductoNegado].[Motivo] AS [Motivo], 
+    [ProductoNegado].[FolioPedido] AS [FolioPedido], 
+    [ProductoNegado].[Detalles] AS [Detalles]
+    FROM [dbo].[ProductoNegado] AS [ProductoNegado]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="spt_fallback_db" EntityType="Self.spt_fallback_db" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [spt_fallback_db].[xserver_name] AS [xserver_name], 
+    [spt_fallback_db].[xdttm_ins] AS [xdttm_ins], 
+    [spt_fallback_db].[xdttm_last_ins_upd] AS [xdttm_last_ins_upd], 
+    [spt_fallback_db].[xfallback_dbid] AS [xfallback_dbid], 
+    [spt_fallback_db].[name] AS [name], 
+    [spt_fallback_db].[dbid] AS [dbid], 
+    [spt_fallback_db].[status] AS [status], 
+    [spt_fallback_db].[version] AS [version]
+    FROM [dbo].[spt_fallback_db] AS [spt_fallback_db]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="spt_fallback_dev" EntityType="Self.spt_fallback_dev" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [spt_fallback_dev].[xserver_name] AS [xserver_name], 
+    [spt_fallback_dev].[xdttm_ins] AS [xdttm_ins], 
+    [spt_fallback_dev].[xdttm_last_ins_upd] AS [xdttm_last_ins_upd], 
+    [spt_fallback_dev].[xfallback_low] AS [xfallback_low], 
+    [spt_fallback_dev].[xfallback_drive] AS [xfallback_drive], 
+    [spt_fallback_dev].[low] AS [low], 
+    [spt_fallback_dev].[high] AS [high], 
+    [spt_fallback_dev].[status] AS [status], 
+    [spt_fallback_dev].[name] AS [name], 
+    [spt_fallback_dev].[phyname] AS [phyname]
+    FROM [dbo].[spt_fallback_dev] AS [spt_fallback_dev]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="spt_fallback_usg" EntityType="Self.spt_fallback_usg" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [spt_fallback_usg].[xserver_name] AS [xserver_name], 
+    [spt_fallback_usg].[xdttm_ins] AS [xdttm_ins], 
+    [spt_fallback_usg].[xdttm_last_ins_upd] AS [xdttm_last_ins_upd], 
+    [spt_fallback_usg].[xfallback_vstart] AS [xfallback_vstart], 
+    [spt_fallback_usg].[dbid] AS [dbid], 
+    [spt_fallback_usg].[segmap] AS [segmap], 
+    [spt_fallback_usg].[lstart] AS [lstart], 
+    [spt_fallback_usg].[sizepg] AS [sizepg], 
+    [spt_fallback_usg].[vstart] AS [vstart]
+    FROM [dbo].[spt_fallback_usg] AS [spt_fallback_usg]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="spt_monitor" EntityType="Self.spt_monitor" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [spt_monitor].[lastrun] AS [lastrun], 
+    [spt_monitor].[cpu_busy] AS [cpu_busy], 
+    [spt_monitor].[io_busy] AS [io_busy], 
+    [spt_monitor].[idle] AS [idle], 
+    [spt_monitor].[pack_received] AS [pack_received], 
+    [spt_monitor].[pack_sent] AS [pack_sent], 
+    [spt_monitor].[connections] AS [connections], 
+    [spt_monitor].[pack_errors] AS [pack_errors], 
+    [spt_monitor].[total_read] AS [total_read], 
+    [spt_monitor].[total_write] AS [total_write], 
+    [spt_monitor].[total_errors] AS [total_errors]
+    FROM [dbo].[spt_monitor] AS [spt_monitor]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Ventas" EntityType="Self.Ventas" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Ventas].[IdCliente] AS [IdCliente], 
+    [Ventas].[Folio] AS [Folio], 
+    [Ventas].[FormaPago] AS [FormaPago], 
+    [Ventas].[TipoPago] AS [TipoPago], 
+    [Ventas].[FechaCompra] AS [FechaCompra], 
+    [Ventas].[FechaSurtido] AS [FechaSurtido], 
+    [Ventas].[Total] AS [Total], 
+    [Ventas].[Codigo] AS [Codigo], 
+    [Ventas].[TipoVenta] AS [TipoVenta], 
+    [Ventas].[Vendedor] AS [Vendedor]
+    FROM [dbo].[Ventas] AS [Ventas]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="spt_values" EntityType="Self.spt_values" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [spt_values].[name] AS [name], 
+    [spt_values].[number] AS [number], 
+    [spt_values].[type] AS [type], 
+    [spt_values].[low] AS [low], 
+    [spt_values].[high] AS [high], 
+    [spt_values].[status] AS [status]
+    FROM [dbo].[spt_values] AS [spt_values]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="masterModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="MSreplication_options">
+          <Key>
+            <PropertyRef Name="optname" />
+            <PropertyRef Name="value" />
+            <PropertyRef Name="major_version" />
+            <PropertyRef Name="minor_version" />
+            <PropertyRef Name="revision" />
+            <PropertyRef Name="install_failures" />
+          </Key>
+          <Property Name="optname" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="value" Type="Boolean" Nullable="false" />
+          <Property Name="major_version" Type="Int32" Nullable="false" />
+          <Property Name="minor_version" Type="Int32" Nullable="false" />
+          <Property Name="revision" Type="Int32" Nullable="false" />
+          <Property Name="install_failures" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="spt_fallback_db">
+          <Key>
+            <PropertyRef Name="xserver_name" />
+            <PropertyRef Name="xdttm_ins" />
+            <PropertyRef Name="xdttm_last_ins_upd" />
+            <PropertyRef Name="name" />
+            <PropertyRef Name="dbid" />
+            <PropertyRef Name="status" />
+            <PropertyRef Name="version" />
+          </Key>
+          <Property Name="xserver_name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="xdttm_ins" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="xdttm_last_ins_upd" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="xfallback_dbid" Type="Int16" />
+          <Property Name="name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dbid" Type="Int16" Nullable="false" />
+          <Property Name="status" Type="Int16" Nullable="false" />
+          <Property Name="version" Type="Int16" Nullable="false" />
+        </EntityType>
+        <EntityType Name="spt_fallback_dev">
+          <Key>
+            <PropertyRef Name="xserver_name" />
+            <PropertyRef Name="xdttm_ins" />
+            <PropertyRef Name="xdttm_last_ins_upd" />
+            <PropertyRef Name="low" />
+            <PropertyRef Name="high" />
+            <PropertyRef Name="status" />
+            <PropertyRef Name="name" />
+            <PropertyRef Name="phyname" />
+          </Key>
+          <Property Name="xserver_name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="xdttm_ins" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="xdttm_last_ins_upd" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="xfallback_low" Type="Int32" />
+          <Property Name="xfallback_drive" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="low" Type="Int32" Nullable="false" />
+          <Property Name="high" Type="Int32" Nullable="false" />
+          <Property Name="status" Type="Int16" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="phyname" Type="String" MaxLength="127" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="spt_fallback_usg">
+          <Key>
+            <PropertyRef Name="xserver_name" />
+            <PropertyRef Name="xdttm_ins" />
+            <PropertyRef Name="xdttm_last_ins_upd" />
+            <PropertyRef Name="dbid" />
+            <PropertyRef Name="segmap" />
+            <PropertyRef Name="lstart" />
+            <PropertyRef Name="sizepg" />
+            <PropertyRef Name="vstart" />
+          </Key>
+          <Property Name="xserver_name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="xdttm_ins" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="xdttm_last_ins_upd" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="xfallback_vstart" Type="Int32" />
+          <Property Name="dbid" Type="Int16" Nullable="false" />
+          <Property Name="segmap" Type="Int32" Nullable="false" />
+          <Property Name="lstart" Type="Int32" Nullable="false" />
+          <Property Name="sizepg" Type="Int32" Nullable="false" />
+          <Property Name="vstart" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="spt_monitor">
+          <Key>
+            <PropertyRef Name="lastrun" />
+            <PropertyRef Name="cpu_busy" />
+            <PropertyRef Name="io_busy" />
+            <PropertyRef Name="idle" />
+            <PropertyRef Name="pack_received" />
+            <PropertyRef Name="pack_sent" />
+            <PropertyRef Name="connections" />
+            <PropertyRef Name="pack_errors" />
+            <PropertyRef Name="total_read" />
+            <PropertyRef Name="total_write" />
+            <PropertyRef Name="total_errors" />
+          </Key>
+          <Property Name="lastrun" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="cpu_busy" Type="Int32" Nullable="false" />
+          <Property Name="io_busy" Type="Int32" Nullable="false" />
+          <Property Name="idle" Type="Int32" Nullable="false" />
+          <Property Name="pack_received" Type="Int32" Nullable="false" />
+          <Property Name="pack_sent" Type="Int32" Nullable="false" />
+          <Property Name="connections" Type="Int32" Nullable="false" />
+          <Property Name="pack_errors" Type="Int32" Nullable="false" />
+          <Property Name="total_read" Type="Int32" Nullable="false" />
+          <Property Name="total_write" Type="Int32" Nullable="false" />
+          <Property Name="total_errors" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="spt_values">
+          <Key>
+            <PropertyRef Name="number" />
+            <PropertyRef Name="type" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="35" FixedLength="false" Unicode="true" />
+          <Property Name="number" Type="Int32" Nullable="false" />
+          <Property Name="type" Type="String" MaxLength="3" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="low" Type="Int32" />
+          <Property Name="high" Type="Int32" />
+          <Property Name="status" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="masterEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="MSreplication_options" EntityType="Self.MSreplication_options" />
+          <EntitySet Name="spt_fallback_db" EntityType="Self.spt_fallback_db" />
+          <EntitySet Name="spt_fallback_dev" EntityType="Self.spt_fallback_dev" />
+          <EntitySet Name="spt_fallback_usg" EntityType="Self.spt_fallback_usg" />
+          <EntitySet Name="spt_monitor" EntityType="Self.spt_monitor" />
+          <EntitySet Name="spt_values" EntityType="Self.spt_values" />
+          <FunctionImport Name="sp_MScleanupmergepublisher" />
+          <FunctionImport Name="sp_MSrepl_startup" />
+          <EntitySet Name="Almacen" EntityType="masterModel.Almacen" />
+          <EntitySet Name="carrusel" EntityType="masterModel.carrusel" />
+          <EntitySet Name="catalogolars" EntityType="masterModel.catalogolars" />
+          <EntitySet Name="Cliente" EntityType="masterModel.Cliente" />
+          <EntitySet Name="Inventario" EntityType="masterModel.Inventario" />
+          <EntitySet Name="NewProducto" EntityType="masterModel.NewProducto" />
+          <EntitySet Name="Pedido" EntityType="masterModel.Pedido" />
+          <EntitySet Name="ProveedorWinmex" EntityType="masterModel.ProveedorWinmex" />
+          <EntitySet Name="PrecioCliente" EntityType="masterModel.PrecioCliente" />
+          <EntitySet Name="Producto" EntityType="masterModel.Producto" />
+          <EntitySet Name="ProductoNegado" EntityType="masterModel.ProductoNegado" />
+          <EntitySet Name="Ventas" EntityType="masterModel.Ventas" />
+        </EntityContainer>
+        <EntityType Name="Almacen">
+          <Key>
+            <PropertyRef Name="Sku" />
+          </Key>
+          <Property Name="Sku" Type="Int32" Nullable="false" />
+          <Property Name="Pieza" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Existencias" Type="Int32" />
+          <Property Name="Faltantes" Type="Int32" />
+          <Property Name="NombreAlmacen" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PedidoSurtido" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PedidoCotejado" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PedidoEnviado" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FechaEnvio" Type="DateTime" Precision="0" />
+          <Property Name="FechaSurtido" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="carrusel">
+          <Key>
+            <PropertyRef Name="Sku" />
+          </Key>
+          <Property Name="Sku" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Imagen" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Ubicacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Precio" Type="Double" />
+        </EntityType>
+        <EntityType Name="catalogolars">
+          <Key>
+            <PropertyRef Name="Sku" />
+          </Key>
+          <Property Name="Sku" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Tamaño" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PrecioCosto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PrecioLocal" Type="Double" />
+          <Property Name="PrecioForaneo" Type="Double" />
+          <Property Name="PrecioBarra" Type="Double" />
+        </EntityType>
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="IdCliente" />
+          </Key>
+          <Property Name="IdCliente" Type="Int32" Nullable="false" />
+          <Property Name="Nombre_s_" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Apellidos" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Direccion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TipoCliente" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Descuento" Type="Double" />
+          <Property Name="CodigoDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Inventario">
+          <Key>
+            <PropertyRef Name="Sku" />
+          </Key>
+          <Property Name="Sku" Type="Int32" Nullable="false" />
+          <Property Name="CodigoAlterno" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Vendidos" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="PorSurtir" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="TotalPiezas" Type="Int32" />
+          <Property Name="Almacen" Type="Int32" />
+          <Property Name="FechaUltimaActualizacion" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="NewProducto">
+          <Key>
+            <PropertyRef Name="Sku" />
+          </Key>
+          <Property Name="Sku" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Tamaño" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PrecioCosto" Type="Double" />
+          <Property Name="PrecioLocal" Type="Double" />
+          <Property Name="PrecioForaneo" Type="Double" />
+          <Property Name="PrecioBarra" Type="Double" />
+        </EntityType>
+        <EntityType Name="Pedido">
+          <Key>
+            <PropertyRef Name="IdCliente" />
+          </Key>
+          <Property Name="IdCliente" Type="Int32" Nullable="false" />
+          <Property Name="Folio" Type="Int32" />
+          <Property Name="AreaCotejo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PersonaSurtido" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="StatusPedido" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="VerificacionPedido" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="RutaAsignada" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ChoferAsignado" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Total" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="FechaPedido" Type="DateTime" Precision="0" />
+          <Property Name="Pedido1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PersonaAutoriza" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ProveedorWinmex">
+          <Key>
+            <PropertyRef Name="Sku" />
+          </Key>
+          <Property Name="Sku" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CodigoAlterno" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PrecioCosto" Type="Double" />
+          <Property Name="Precio1" Type="Double" />
+          <Property Name="Precio2" Type="Double" />
+          <Property Name="Precio3" Type="Double" />
+          <Property Name="Precio4" Type="Double" />
+          <Property Name="Iva" Type="Double" />
+          <Property Name="ieps" Type="Double" />
+          <Property Name="Tipo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Categoria" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Marca" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Proveedor" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Existencia" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Almacen" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ClaveProdServ" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ClaveUnidad" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PrecioCliente">
+          <Key>
+            <PropertyRef Name="Sku" />
+          </Key>
+          <Property Name="Sku" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PrecioCosto" Type="Double" />
+          <Property Name="Precio1" Type="Double" />
+          <Property Name="Precio2" Type="Double" />
+          <Property Name="Precio3" Type="Double" />
+          <Property Name="Precio4" Type="Double" />
+          <Property Name="Iva" Type="Double" />
+          <Property Name="Ieps" Type="Double" />
+        </EntityType>
+        <EntityType Name="Producto">
+          <Key>
+            <PropertyRef Name="Sku" />
+          </Key>
+          <Property Name="CodigoAlterno" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="Sku" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Precio" Type="Double" />
+          <Property Name="Existencias" Type="Int32" />
+          <Property Name="Marca" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Vendidos" Type="Int32" />
+          <Property Name="PorSurtir" Type="Int32" />
+          <Property Name="Proveedor" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Almacen" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TotalPiezas" Type="Int32" />
+          <Property Name="Categoria" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ClaveProdServ" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ClaveUnidad" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Compatibilidad" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FechaActualizacion" Type="DateTime" Precision="0" />
+          <Property Name="Imagen" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Detalles" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ProductoNegado">
+          <Key>
+            <PropertyRef Name="Sku" />
+          </Key>
+          <Property Name="Sku" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="NombreCliente" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CantidadNegada" Type="Int32" />
+          <Property Name="FechaNegacion" Type="DateTime" Precision="0" />
+          <Property Name="Motivo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FolioPedido" Type="Int32" />
+          <Property Name="Detalles" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Ventas">
+          <Key>
+            <PropertyRef Name="IdCliente" />
+          </Key>
+          <Property Name="IdCliente" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Folio" Type="Int32" />
+          <Property Name="FormaPago" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TipoPago" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FechaCompra" Type="DateTime" Precision="0" />
+          <Property Name="FechaSurtido" Type="DateTime" Precision="0" />
+          <Property Name="Total" Type="Double" />
+          <Property Name="Codigo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TipoVenta" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Vendedor" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="masterModelStoreContainer" CdmEntityContainer="masterEntities2">
+          <EntitySetMapping Name="MSreplication_options">
+            <EntityTypeMapping TypeName="masterModel.MSreplication_options">
+              <MappingFragment StoreEntitySet="MSreplication_options">
+                <ScalarProperty Name="optname" ColumnName="optname" />
+                <ScalarProperty Name="value" ColumnName="value" />
+                <ScalarProperty Name="major_version" ColumnName="major_version" />
+                <ScalarProperty Name="minor_version" ColumnName="minor_version" />
+                <ScalarProperty Name="revision" ColumnName="revision" />
+                <ScalarProperty Name="install_failures" ColumnName="install_failures" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="spt_fallback_db">
+            <EntityTypeMapping TypeName="masterModel.spt_fallback_db">
+              <MappingFragment StoreEntitySet="spt_fallback_db">
+                <ScalarProperty Name="xserver_name" ColumnName="xserver_name" />
+                <ScalarProperty Name="xdttm_ins" ColumnName="xdttm_ins" />
+                <ScalarProperty Name="xdttm_last_ins_upd" ColumnName="xdttm_last_ins_upd" />
+                <ScalarProperty Name="xfallback_dbid" ColumnName="xfallback_dbid" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="dbid" ColumnName="dbid" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="version" ColumnName="version" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="spt_fallback_dev">
+            <EntityTypeMapping TypeName="masterModel.spt_fallback_dev">
+              <MappingFragment StoreEntitySet="spt_fallback_dev">
+                <ScalarProperty Name="xserver_name" ColumnName="xserver_name" />
+                <ScalarProperty Name="xdttm_ins" ColumnName="xdttm_ins" />
+                <ScalarProperty Name="xdttm_last_ins_upd" ColumnName="xdttm_last_ins_upd" />
+                <ScalarProperty Name="xfallback_low" ColumnName="xfallback_low" />
+                <ScalarProperty Name="xfallback_drive" ColumnName="xfallback_drive" />
+                <ScalarProperty Name="low" ColumnName="low" />
+                <ScalarProperty Name="high" ColumnName="high" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="phyname" ColumnName="phyname" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="spt_fallback_usg">
+            <EntityTypeMapping TypeName="masterModel.spt_fallback_usg">
+              <MappingFragment StoreEntitySet="spt_fallback_usg">
+                <ScalarProperty Name="xserver_name" ColumnName="xserver_name" />
+                <ScalarProperty Name="xdttm_ins" ColumnName="xdttm_ins" />
+                <ScalarProperty Name="xdttm_last_ins_upd" ColumnName="xdttm_last_ins_upd" />
+                <ScalarProperty Name="xfallback_vstart" ColumnName="xfallback_vstart" />
+                <ScalarProperty Name="dbid" ColumnName="dbid" />
+                <ScalarProperty Name="segmap" ColumnName="segmap" />
+                <ScalarProperty Name="lstart" ColumnName="lstart" />
+                <ScalarProperty Name="sizepg" ColumnName="sizepg" />
+                <ScalarProperty Name="vstart" ColumnName="vstart" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="spt_monitor">
+            <EntityTypeMapping TypeName="masterModel.spt_monitor">
+              <MappingFragment StoreEntitySet="spt_monitor">
+                <ScalarProperty Name="lastrun" ColumnName="lastrun" />
+                <ScalarProperty Name="cpu_busy" ColumnName="cpu_busy" />
+                <ScalarProperty Name="io_busy" ColumnName="io_busy" />
+                <ScalarProperty Name="idle" ColumnName="idle" />
+                <ScalarProperty Name="pack_received" ColumnName="pack_received" />
+                <ScalarProperty Name="pack_sent" ColumnName="pack_sent" />
+                <ScalarProperty Name="connections" ColumnName="connections" />
+                <ScalarProperty Name="pack_errors" ColumnName="pack_errors" />
+                <ScalarProperty Name="total_read" ColumnName="total_read" />
+                <ScalarProperty Name="total_write" ColumnName="total_write" />
+                <ScalarProperty Name="total_errors" ColumnName="total_errors" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="spt_values">
+            <EntityTypeMapping TypeName="masterModel.spt_values">
+              <MappingFragment StoreEntitySet="spt_values">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="number" ColumnName="number" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="low" ColumnName="low" />
+                <ScalarProperty Name="high" ColumnName="high" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_MScleanupmergepublisher" FunctionName="masterModel.Store.sp_MScleanupmergepublisher" />
+          <FunctionImportMapping FunctionImportName="sp_MSrepl_startup" FunctionName="masterModel.Store.sp_MSrepl_startup" />
+          <EntitySetMapping Name="Almacen">
+            <EntityTypeMapping TypeName="masterModel.Almacen">
+              <MappingFragment StoreEntitySet="Almacen">
+                <ScalarProperty Name="FechaSurtido" ColumnName="FechaSurtido" />
+                <ScalarProperty Name="FechaEnvio" ColumnName="FechaEnvio" />
+                <ScalarProperty Name="PedidoEnviado" ColumnName="PedidoEnviado" />
+                <ScalarProperty Name="PedidoCotejado" ColumnName="PedidoCotejado" />
+                <ScalarProperty Name="PedidoSurtido" ColumnName="PedidoSurtido" />
+                <ScalarProperty Name="NombreAlmacen" ColumnName="NombreAlmacen" />
+                <ScalarProperty Name="Faltantes" ColumnName="Faltantes" />
+                <ScalarProperty Name="Existencias" ColumnName="Existencias" />
+                <ScalarProperty Name="Pieza" ColumnName="Pieza" />
+                <ScalarProperty Name="Sku" ColumnName="Sku" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="carrusel">
+            <EntityTypeMapping TypeName="masterModel.carrusel">
+              <MappingFragment StoreEntitySet="carrusel">
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="Ubicacion" ColumnName="Ubicacion" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Imagen" ColumnName="Imagen" />
+                <ScalarProperty Name="Sku" ColumnName="Sku" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="catalogolars">
+            <EntityTypeMapping TypeName="masterModel.catalogolars">
+              <MappingFragment StoreEntitySet="catalogolars">
+                <ScalarProperty Name="PrecioBarra" ColumnName="PrecioBarra" />
+                <ScalarProperty Name="PrecioForaneo" ColumnName="PrecioForaneo" />
+                <ScalarProperty Name="PrecioLocal" ColumnName="PrecioLocal" />
+                <ScalarProperty Name="PrecioCosto" ColumnName="PrecioCosto" />
+                <ScalarProperty Name="Tamaño" ColumnName="Tamaño" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Sku" ColumnName="Sku" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cliente">
+            <EntityTypeMapping TypeName="masterModel.Cliente">
+              <MappingFragment StoreEntitySet="Cliente">
+                <ScalarProperty Name="CodigoDesc" ColumnName="CodigoDesc" />
+                <ScalarProperty Name="Descuento" ColumnName="Descuento" />
+                <ScalarProperty Name="TipoCliente" ColumnName="TipoCliente" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+                <ScalarProperty Name="Nombre_s_" ColumnName="Nombre(s)" />
+                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Inventario">
+            <EntityTypeMapping TypeName="masterModel.Inventario">
+              <MappingFragment StoreEntitySet="Inventario">
+                <ScalarProperty Name="FechaUltimaActualizacion" ColumnName="FechaUltimaActualizacion" />
+                <ScalarProperty Name="Almacen" ColumnName="Almacen" />
+                <ScalarProperty Name="TotalPiezas" ColumnName="TotalPiezas" />
+                <ScalarProperty Name="PorSurtir" ColumnName="PorSurtir" />
+                <ScalarProperty Name="Vendidos" ColumnName="Vendidos" />
+                <ScalarProperty Name="CodigoAlterno" ColumnName="CodigoAlterno" />
+                <ScalarProperty Name="Sku" ColumnName="Sku" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NewProducto">
+            <EntityTypeMapping TypeName="masterModel.NewProducto">
+              <MappingFragment StoreEntitySet="NewProducto">
+                <ScalarProperty Name="PrecioBarra" ColumnName="PrecioBarra" />
+                <ScalarProperty Name="PrecioForaneo" ColumnName="PrecioForaneo" />
+                <ScalarProperty Name="PrecioLocal" ColumnName="PrecioLocal" />
+                <ScalarProperty Name="PrecioCosto" ColumnName="PrecioCosto" />
+                <ScalarProperty Name="Tamaño" ColumnName="Tamaño" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Sku" ColumnName="Sku" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pedido">
+            <EntityTypeMapping TypeName="masterModel.Pedido">
+              <MappingFragment StoreEntitySet="Pedido">
+                <ScalarProperty Name="PersonaAutoriza" ColumnName="PersonaAutoriza" />
+                <ScalarProperty Name="Pedido1" ColumnName="Pedido" />
+                <ScalarProperty Name="FechaPedido" ColumnName="FechaPedido" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="ChoferAsignado" ColumnName="ChoferAsignado" />
+                <ScalarProperty Name="RutaAsignada" ColumnName="RutaAsignada" />
+                <ScalarProperty Name="VerificacionPedido" ColumnName="VerificacionPedido" />
+                <ScalarProperty Name="StatusPedido" ColumnName="StatusPedido" />
+                <ScalarProperty Name="PersonaSurtido" ColumnName="PersonaSurtido" />
+                <ScalarProperty Name="AreaCotejo" ColumnName="AreaCotejo" />
+                <ScalarProperty Name="Folio" ColumnName="Folio" />
+                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProveedorWinmex">
+            <EntityTypeMapping TypeName="masterModel.ProveedorWinmex">
+              <MappingFragment StoreEntitySet="ProveedorWinmex">
+                <ScalarProperty Name="ClaveUnidad" ColumnName="ClaveUnidad" />
+                <ScalarProperty Name="ClaveProdServ" ColumnName="ClaveProdServ" />
+                <ScalarProperty Name="Almacen" ColumnName="Almacen" />
+                <ScalarProperty Name="Existencia" ColumnName="Existencia" />
+                <ScalarProperty Name="Proveedor" ColumnName="Proveedor" />
+                <ScalarProperty Name="Marca" ColumnName="Marca" />
+                <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="ieps" ColumnName="ieps" />
+                <ScalarProperty Name="Iva" ColumnName="Iva" />
+                <ScalarProperty Name="Precio4" ColumnName="Precio4" />
+                <ScalarProperty Name="Precio3" ColumnName="Precio3" />
+                <ScalarProperty Name="Precio2" ColumnName="Precio2" />
+                <ScalarProperty Name="Precio1" ColumnName="Precio1" />
+                <ScalarProperty Name="PrecioCosto" ColumnName="PrecioCosto" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="CodigoAlterno" ColumnName="CodigoAlterno" />
+                <ScalarProperty Name="Sku" ColumnName="Sku" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PrecioCliente">
+            <EntityTypeMapping TypeName="masterModel.PrecioCliente">
+              <MappingFragment StoreEntitySet="PrecioCliente">
+                <ScalarProperty Name="Ieps" ColumnName="Ieps" />
+                <ScalarProperty Name="Iva" ColumnName="Iva" />
+                <ScalarProperty Name="Precio4" ColumnName="Precio4" />
+                <ScalarProperty Name="Precio3" ColumnName="Precio3" />
+                <ScalarProperty Name="Precio2" ColumnName="Precio2" />
+                <ScalarProperty Name="Precio1" ColumnName="Precio1" />
+                <ScalarProperty Name="PrecioCosto" ColumnName="PrecioCosto" />
+                <ScalarProperty Name="Sku" ColumnName="Sku" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Producto">
+            <EntityTypeMapping TypeName="masterModel.Producto">
+              <MappingFragment StoreEntitySet="Producto">
+                <ScalarProperty Name="Detalles" ColumnName="Detalles" />
+                <ScalarProperty Name="Imagen" ColumnName="Imagen" />
+                <ScalarProperty Name="FechaActualizacion" ColumnName="FechaActualizacion" />
+                <ScalarProperty Name="Compatibilidad" ColumnName="Compatibilidad" />
+                <ScalarProperty Name="ClaveUnidad" ColumnName="ClaveUnidad" />
+                <ScalarProperty Name="ClaveProdServ" ColumnName="ClaveProdServ" />
+                <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+                <ScalarProperty Name="TotalPiezas" ColumnName="TotalPiezas" />
+                <ScalarProperty Name="Almacen" ColumnName="Almacen" />
+                <ScalarProperty Name="Proveedor" ColumnName="Proveedor" />
+                <ScalarProperty Name="PorSurtir" ColumnName="PorSurtir" />
+                <ScalarProperty Name="Vendidos" ColumnName="Vendidos" />
+                <ScalarProperty Name="Marca" ColumnName="Marca" />
+                <ScalarProperty Name="Existencias" ColumnName="Existencias" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Sku" ColumnName="Sku" />
+                <ScalarProperty Name="CodigoAlterno" ColumnName="CodigoAlterno" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductoNegado">
+            <EntityTypeMapping TypeName="masterModel.ProductoNegado">
+              <MappingFragment StoreEntitySet="ProductoNegado">
+                <ScalarProperty Name="Detalles" ColumnName="Detalles" />
+                <ScalarProperty Name="FolioPedido" ColumnName="FolioPedido" />
+                <ScalarProperty Name="Motivo" ColumnName="Motivo" />
+                <ScalarProperty Name="FechaNegacion" ColumnName="FechaNegacion" />
+                <ScalarProperty Name="CantidadNegada" ColumnName="CantidadNegada" />
+                <ScalarProperty Name="NombreCliente" ColumnName="NombreCliente" />
+                <ScalarProperty Name="Sku" ColumnName="Sku" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ventas">
+            <EntityTypeMapping TypeName="masterModel.Ventas">
+              <MappingFragment StoreEntitySet="Ventas">
+                <ScalarProperty Name="Vendedor" ColumnName="Vendedor" />
+                <ScalarProperty Name="TipoVenta" ColumnName="TipoVenta" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="FechaSurtido" ColumnName="FechaSurtido" />
+                <ScalarProperty Name="FechaCompra" ColumnName="FechaCompra" />
+                <ScalarProperty Name="TipoPago" ColumnName="TipoPago" />
+                <ScalarProperty Name="FormaPago" ColumnName="FormaPago" />
+                <ScalarProperty Name="Folio" ColumnName="Folio" />
+                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
